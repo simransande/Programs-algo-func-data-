@@ -10,6 +10,7 @@ public class Flipcoin
 	System.out.println("enter number of flip you want");
 	int numtime=u.ipnumber();
 	u.Flipcoin(numtime);
+
 	
 	}
 }

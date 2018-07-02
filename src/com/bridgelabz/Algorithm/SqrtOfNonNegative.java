@@ -8,7 +8,7 @@ public class SqrtOfNonNegative
 	{
 		  double epsilon = 1e-15; 
 		  Utility u=new Utility();
-		  System.out.println("Enter the C");
+		  System.out.println("Enter the number");
 		  double c =u.ipnumber();
 		  u.SqrtNonNega(c);
 

@@ -11,5 +11,6 @@ public class pow2
 		System.out.println("enter the power");
 		number=u.ipnumber();
 		u.power(number);
-		}
+		
 	}
+}

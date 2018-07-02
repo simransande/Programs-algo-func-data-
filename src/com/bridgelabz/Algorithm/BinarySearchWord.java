@@ -12,7 +12,7 @@ public class BinarySearchWord
     	int n;
     	String search = null;
     	String array[] = null;
-		u.WordSearchBinary(search ,array);
+		/*u.WordSearchBinary(search ,array);*/
     }
 }
 	

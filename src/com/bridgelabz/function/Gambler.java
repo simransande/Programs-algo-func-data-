@@ -12,7 +12,7 @@ public class Gambler
 		System.out.println("Enter the trails");
 		trails=u.ipnumber();
 	
-		u.Gamnler(trails);
+		u.Gambler(trails);
 		
 		
 	}
