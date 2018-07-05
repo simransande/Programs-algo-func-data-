@@ -11,6 +11,8 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 
+import DSbanking.Queue;
+
 
 public class Utility
 {
@@ -83,7 +85,6 @@ public class Utility
 			}
 			else
 				headcount++;
-			
 		}
 		per1=(double)tailcount/numtime*100;
 		per2=(double)headcount/numtime*100;
@@ -936,6 +937,88 @@ public class Utility
 	       return d;
 	 
 	}
+	//[4] banking
+	public void UtilityBanking(Queue q, int balance, int person) {
+		int count=0;
+		while(count<person) {
+		boolean flag;
+		System.out.println("Bank Counter");
+		do {
+		System.out.println();
+
+		System.out.println("1.Deposit");
+		System.out.println("2.Withdraw");
+		System.out.println("3.check Current Balance is ");
+		System.out.println("4.Number of person in queue");
+		System.out.println("5.Dequeue");
+		System.out.println("6.Enqueue");
+		System.out.println("Enter your choice");
+		int choice=ipnumber();
+		switch(choice) {
+
+		case 1 :System.out.println("Enter the amt to deposit");
+		int amt=ipnumber();
+		balance=balance+amt;
+		System.out.println("Balance is "+ balance);
+		break;
+
+		case 2 :System.out.println("Enter the amt to withdraw");
+		int withdrawal=ipnumber();
+		if(withdrawal<balance) {
+		balance=balance-withdrawal;
+		System.out.println("Balance is "+balance);
+		}
+		else {
+		System.out.println("Insufficient balance");
+		}
+		break;
+
+		case 3 :System.out.println("Current balance is "+balance);
+		break;
+
+		case 4 :int number=q.sizeOfQue();
+		System.out.println("Number of person in Queue"+" "+number);
+		break;
+
+		case 5 :q.deQue();
+		number=q.sizeOfQue(); 
+		System.out.println("Number of person in Queue"+" "+number);
+		break;
+
+		case 6 :q.enQue();
+		number=q.sizeOfQue();
+		System.out.println("Number of person in Queue"+" "+number);
+		break;
+
+		default:System.out.println("Invalid choice");
+		break;
+
+		}
+		System.out.println("Do you want to continue the transaction");
+		System.out.println("Press true or false");
+	
+		flag=scanner.nextBoolean();
+		}while(flag);
+		q.deQue();
+		}
+		
+	}
+	/*public int calenderqueue(int month, int year,int day) {
+		     int y = year - (14 - month) / 12;
+		       int x = y + y/4 - y/100 + y/400;
+		       int m = month + 12 * ((14 - month) / 12) - 2;
+		       int d = (day + x + (31*m)/12) % 7;
+		       return d;*/
+		 
+		public int calenderqueue(int month, int year,int day) {
+	     int y = year - (14 - month) / 12;
+	       int x = y + y/4 - y/100 + y/400;
+	       int m = month + 12 * ((14 - month) / 12) - 2;
+	       int d = (day + x + (31*m)/12) % 7;
+	       return d;
+	 }
+
+	
 }
 	
 
