@@ -57,6 +57,26 @@ public class Utility
 		
 			return rand.nextBoolean();
 	}
+	public int getprime(int i) {
+		int x;
+
+
+		for(x=2;x<i;x++)
+		{
+		if(i%x==0)
+		{
+		break;
+		}
+		}
+		if(i==x)
+		{
+		return x;
+
+		}
+
+		return 0;
+
+	}
 	
 	//[1] StringReplace
 	public static void replacestring()
