@@ -3,19 +3,33 @@ package com.bridgelabz.utility;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Deque;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import DSbanking.Queue;
+import Regex.userdetails;
 
 
 public class Utility
 {
+	BufferedReader br;
+	private final String NAME = "<<name>>";
+	private final String FULLNAME = "<<full name>> ";
+	private final String MOBILE_NO = "xxxxxxxxxx";
+	private final String DATE = "2017/06/30 10:50:55";
 	private static final char[] Array2D = null;
 	private static final String MagicNumber = null;
 	static Random rand=new Random();
@@ -1037,9 +1051,21 @@ public class Utility
 	       int d = (day + x + (31*m)/12) % 7;
 	       return d;
 	 }
+		public Date printDate(String ipstring) {
+			
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+				try{
+					String date=null;
+					return sdf.parse(date);
+				}
+				catch(ParseException pe){
+					return null;
+				}
+			
+		}
 
 	
-}
+
 	
 
 		
@@ -1141,7 +1167,65 @@ private String swap(String str, int l, int i) {
 }
 }*/
 
-		
+
+public String replaceString(userdetails userDetails,String message){
+Pattern p = Pattern.compile(NAME);
+Matcher m = p.matcher(message); 
+message = m.replaceAll(userDetails.getfName());
+
+p = Pattern.compile(FULLNAME);
+m = p.matcher(message); 
+message = m.replaceAll(userDetails.getfName()+" "+userDetails.getlName());
+
+p = Pattern.compile(MOBILE_NO);
+m = p.matcher(message); 
+message = m.replaceAll(userDetails.mobileNo());
+
+p = Pattern.compile(DATE);
+m = p.matcher(message); 
+message = m.replaceAll(userDetails.date());
+
+return message;
+}
+public String getCurrentDate(Date date)
+{
+ DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+  LocalDateTime now = LocalDateTime.now();  
+//  System.out.println(dtf.format(now));  
+  return dtf.format(now);
+}
+
+
+
+
+public String getFileText(String fileName){
+
+try{
+FileReader f=new FileReader(fileName);
+br=new BufferedReader(f);
+StringBuilder sb=new StringBuilder();
+String line=br.readLine();
+while(line!=null){
+sb.append(line);
+sb.append(System.lineSeparator());
+line=br.readLine();
+}
+return sb.toString();
+}
+catch(Exception e){
+return null;
+}
+finally{
+try{
+
+br.close();
+}
+catch(IOException e){
+}	
+}
+}
+}
+	
 	
 	 
 
