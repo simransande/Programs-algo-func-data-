@@ -11,7 +11,7 @@ public class Prime0to1000
 			Utility u=new Utility();
 			System.out.println("Prime number list:");
 			
-			int value=u.Primenumber();
+			int value=Utility.Primenumber();
 			System.out.println(value);
 			
 			

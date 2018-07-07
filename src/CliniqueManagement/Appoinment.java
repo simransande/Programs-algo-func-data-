@@ -1,9 +1,7 @@
 package CliniqueManagement;
-
 import java.sql.Date;
-
 public class Appoinment
-{
+	{
 	
 		Integer did;
 		Date date;

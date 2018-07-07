@@ -71,7 +71,7 @@ public class Utility
 		
 			return rand.nextBoolean();
 	}
-	public int getprime(int i) {
+	public static int getprime(int i) {
 		int x;
 
 
@@ -346,14 +346,16 @@ public class Utility
 			if(Arrays.equals(arr1, arr2))
 			{
 				System.out.println("strings are anagram");
+				
 			}
 			else
 			System.out.println("strings not anagram");
+			
 			}
 	
 	
 	//[2] Prime numbers
-	public int Primenumber() {
+	public static int Primenumber() {
 
 		{
 
@@ -377,7 +379,8 @@ public class Utility
 				if( x == i )
 				{
 
-				   	System.out.print( x + "\t" );		
+				   System.out.print( x + "\t" );
+				  
 				}
 		
 				}
@@ -1224,6 +1227,95 @@ catch(IOException e){
 }	
 }
 }
+public static int[] primeArray() {
+	
+	
+	int z=0;
+	int primes[]=new int[500];
+	for(int i = 0;i<1000;i++)
+	{ 
+	int x=Primenumber();
+	if(x!=0)
+	{
+	  primes[z]=x;
+	  z++;
+	   }
+
+	}
+	return primes;// TODO Auto-generated method stub
+	
+}
+public boolean AnagramBoolean(String str1, String str2) 
+{
+	 str1 = str1.replaceAll("\\s" ," ");
+	 str2 = str2.replaceAll("\\s" ," ");
+	int  l1 = str1.length( );
+	int  l2 = str2.length( );
+	if( l1 != l2 )
+	{
+	return false;
+	      //System.out.println("Please enter equal length string for checking they are angaram or not..");
+
+	}
+
+	char   arr1[ ] =  str1.toLowerCase().toCharArray();
+	char   arr2[ ] =  str2.toLowerCase().toCharArray();
+	Arrays.sort( arr1 );
+	Arrays.sort( arr2 );
+	       
+
+
+	if(Arrays.equals(arr1, arr2))
+	{
+	return true;
+	}
+	return false;
+	}
+public static int[] getprimeArray()
+{
+int z=0;
+int primes[]=new int[500];
+for(int i = 0;i<1000;i++)
+{ 
+int x=getprime(i);
+if(x!=0)
+{
+  primes[z]=x;
+  z++;
+   }
+
+}
+return primes;
+}
+public boolean chackAnageam(String str1, String str2) 
+{
+
+
+str1 = str1.replaceAll("\\s" ," ");
+str2 = str2.replaceAll("\\s" ," ");
+int  l1 = str1.length( );
+int  l2 = str2.length( );
+if( l1 != l2 )
+{
+return false;
+      //System.out.println("Please enter equal length string for checking they are angaram or not..");
+
+}
+
+char   arr1[ ] =  str1.toLowerCase().toCharArray();
+char   arr2[ ] =  str2.toLowerCase().toCharArray();
+Arrays.sort( arr1 );
+Arrays.sort( arr2 );
+       
+
+
+if(Arrays.equals(arr1, arr2))
+{
+return true;
+}
+return false;
+}
+
 }
 	
 	

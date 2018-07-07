@@ -15,5 +15,6 @@ public class Anagram
 		str2=u.ipstring();
 		str2=str2.replaceAll("\\s+", "");
 		u.Anagram(str1,str2);
+		
 	}
 }
