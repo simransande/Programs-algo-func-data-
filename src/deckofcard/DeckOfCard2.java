@@ -3,33 +3,33 @@ package deckofcard;
 public class DeckOfCard2 
 {
 	
-		  public static void main(String[] args) {
-		    int[] deck = new int[52];
-		    String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
-		    String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
-
-		    // Initialize cards
-		    for (int i = 0; i < deck.length; i++) 
-		    {
-		      deck[i] = i;
-		    }
-
-		    // Shuffle the cards
-		    for (int i = 0; i < deck.length; i++)
-		    {
-		      int index = (int)(Math.random() * deck.length);
-		      int temp = deck[i];
-		      deck[i] = deck[index];
-		      deck[index] = temp;
-		    }
-		    
-		    // Display the all the cards
-		    for (int i = 0; i < 52; i++) {
-		      String suit = suits[deck[i] / 13];
-		      String rank = ranks[deck[i] % 13];
-		      System.out.println( rank + " of " + suit);
-		    }
-		    
-		  }
-		}
-
+	 public static void main(String[] args) 
+	  {
+	    String[] SUITS = {"Clubs", "Diamonds", "Hearts", "Spades"};
+	    String[] RANKS = {"2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace"};
+	    int n = SUITS.length * RANKS.length;
+	    String[] deck = new String[n];
+	    for(int i = 0; i < RANKS.length; i++) 
+	     {
+	        for (int j = 0; j < SUITS.length; j++) 
+	         {
+	           deck[SUITS.length*i + j] = RANKS[i] + " of " + SUITS[j];
+	         }
+	     }
+	    for (int i = 0; i < n; i++) 
+	     {
+	        int r = i + (int) (Math.random() * (n-i));
+	        String temp = deck[r];
+	        deck[r] = deck[i];
+	        deck[i] = temp;
+	     }
+	    for(int i = 0; i < 4; i++) 
+	     {
+	        System.out.println("---------- PLAYER NUMBER: " + (i) + " HAVE CARDS ARE BELOW ----------");
+	        for (int j = 0; j < 9; j++) 
+	         {
+	           System.out.println(deck[i+j*4] + " (Card " + (i+j*4)+")");
+	         }
+	     }
+	  }
+	}

@@ -2,8 +2,7 @@ package CliniqueManagement;
 import java.sql.Date;
 public class Appoinment
 	{
-	
-		Integer did;
+		 Integer did;
 		Date date;
 		//constructor
 		public Appoinment(int did,Date date)
@@ -48,10 +47,8 @@ public class Appoinment
 				return true;
 	    	if (!(object instanceof Appoinment))
 				return false;
-	    	
 	    	Appoinment dA = (Appoinment) object;
-
-			if((this.did==dA.did) && (this.date.equals(dA.date)))
+	    	if((this.did==dA.did) && (this.date.equals(dA.date)))
 				return true;
 			else
 				return false;

@@ -1,4 +1,4 @@
-package com.bridgelabz.utility;
+ package com.bridgelabz.utility;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -684,8 +684,6 @@ public class Utility
 		return y;
 			}
 	
-	
-	
 	public void WordSearchBinary(String  search , String[]  array) 
 	{
 		
@@ -737,8 +735,6 @@ public class Utility
 	
 			}
 	 
-	
-
 	//[1] unordered
 	public void unorderd( ) 
 
@@ -1048,34 +1044,61 @@ public class Utility
 		       return d;*/
 		 
 		public int calenderqueue(int month, int year,int day) {
-	     int y = year - (14 - month) / 12;
+	     int y = year - (1 - month) / 12;
 	       int x = y + y/4 - y/100 + y/400;
 	       int m = month + 12 * ((14 - month) / 12) - 2;
 	       int d = (day + x + (31*m)/12) % 7;
+	       System.out.println(d+"");
 	       return d;
+	       /*
+	    double y0;
+		double x;
+		double m0;
+		int day;
+		y0 = y-(1 -m) / 12;
+		x = y0 + y0/4-y0/100 + y0/400;
+		m0 = m+12*((14-m)/12)-2;
+		day = (int) ((d + x + 31*m0/12)%7);
+		System.out.print(day+" ");
+		return day;
+	        */
 	 }
-		public Date printDate(String ipstring) {
-			
-				SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-				try{
-					String date=null;
-					return sdf.parse(date);
-				}
-				catch(ParseException pe){
-					return null;
-				}
-			
-		}
-
-	
-
-	
-
 		
-	
-	
+		public Date printDate(String string) 
+		{
+			
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+				try{ 
+					String date;	      
 
-	/*public void binarysearch(int search, int[] array)
+					return (Date) dtf.parse(date=null);
+				}
+				
+				catch(Exception e)
+				{
+				return null;
+				}
+		}
+		/*
+		  public String getCurrentDate(Date date)
+{
+
+ DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+ try{
+ String date;
+ return sdf.parse(date=null);
+ }
+ catch(Exception e)
+				{
+				return null;
+				}
+  LocalDateTime now = LocalDateTime.now();  
+//  System.out.println(dtf.format(now));  
+  return dtf.format(now);
+}
+
+		 */
+/*public void binarysearch(int search, int[] array)
 		{
 	Scanner sc = new Scanner( System.in );
 
@@ -1199,8 +1222,6 @@ public String getCurrentDate(Date date)
 }
 
 
-
-
 public String getFileText(String fileName){
 
 try{
@@ -1315,8 +1336,69 @@ return true;
 }
 return false;
 }
-
+ 
+// Merge Sort[9]----print array,mergesort,merge
+public void printArray(int[] arr) 
+{
+	int n=arr.length;
+	for(int i=0;i<n;i++)
+		System.out.println(arr[i]);
+	System.out.println();	
 }
+public void mergesort(int[] arr, int lower, int upper)
+{
+	if(lower<upper)
+	{
+		int middle=(lower+upper)/2;
+		mergesort(arr,lower,middle);
+		mergesort(arr,middle+1,upper);
+		merge(arr,lower,middle,upper);
+	}
+}
+private void merge(int[] arr, int lower, int middle, int upper)
+{
+	// TODO Auto-generated method stub
+	int n1=middle-lower+1;
+	int n2=upper-middle;
+	int L[]=new int [n1];
+	int R[]=new int [n2];
+	for(int i=0;i<n1;++i)
+		L[i]=arr[lower+i];
+	for(int j=0;j<n2;++j)
+		R[j]=arr[middle + 1 +j];
+	int i=0,j=0;
+	int k=lower;
+	while(i<n1 && j<n2)
+	{
+		if (L[i] <= R[j])
+		{
+			arr[k]=L[i];
+			i++;
+		}
+		else
+		{
+			arr[k]=R[j];
+			j++;
+		}
+		k++;
+	}
+	while (i<n1)
+	{
+		arr[k]=L[i];
+		i++;
+		k++;
+	}
+	while (j<n2)
+	{
+		arr[k]=R[j];
+		j++;
+		k++;
+	}
+		
+}
+}
+	
+
 	
 	
 	 

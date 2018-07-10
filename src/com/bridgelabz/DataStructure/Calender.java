@@ -4,9 +4,6 @@ import com.bridgelabz.utility.Utility;
 
 public class Calender 
 {
-	
-
-
 	public static void main(String[] args) 
 	{
 	       Utility u=new Utility();
@@ -16,13 +13,14 @@ public class Calender
 	       System.out.println("Enter the year");
 	       year=u.ipnumber();
 	       
-	       String[] months = {
+	       String[] months = 
+	    	   {
 	           "",                               
 	           "January", "February", "March",
 	           "April", "May", "June",
 	           "July", "August", "September",
 	           "October", "November", "December"
-	       };
+	    	   };
 	       int[] days = {
 	           0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
 	       };

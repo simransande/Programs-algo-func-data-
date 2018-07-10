@@ -33,7 +33,7 @@ public class find
 			return temp;
 		}
 
-		public ArrayList<Doctor> FindByava (ArrayList<Doctor> al, String as)  //search doctor by availability
+		public ArrayList<Doctor> FindByaval (ArrayList<Doctor> al, String as)  //search doctor by availability
 		{
 			ArrayList<Doctor> temp=new ArrayList<Doctor>();
 			
@@ -75,7 +75,7 @@ public class find
 			return temp;
 		}
 
-		public ArrayList<patients> FindByava1 (ArrayList<patients> al1, String as1)   //search patients by availability
+		public ArrayList<patients> FindByAval (ArrayList<patients> al1, String as1)   //search patients by availability
 		{	
 			ArrayList<patients> temp=new ArrayList<patients>();
 			

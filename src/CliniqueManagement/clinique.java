@@ -69,13 +69,13 @@ import java.util.ArrayList;
 						{
 							if(doc.size()>=1)
 							{
-								System.out.println("Enter Date of Appointment(eg.10/06/2016): ");
+								System.out.println("Enter Date of Appointment: ");
 								Date date=u.printDate(u.ipstring());
 								if(date==null)
 								{
 									System.out.println("Date format is not correct");
 								}
-								//Checking for availability of doctors
+								// availability of doctors
 								else
 								{
 									Appoinment newApp=new Appoinment( did,(java.sql.Date) date);
@@ -154,7 +154,7 @@ import java.util.ArrayList;
 									//search doctor by Availability
 									System.out.println("Enter Docotor Availability");
 									String avail=u.ipstring();
-									ald=f.FindByava(ald,avail);
+									ald=f.FindByaval(ald,avail);
 									System.out.println(ald);
 									break;
 							case 4:
@@ -170,7 +170,7 @@ import java.util.ArrayList;
 						int ch2=0;
 						do
 						{
-							System.out.println();
+						
 							System.out.println("----------Search Patients---------");
 							System.out.println();
 							System.out.println("1.Search Patients By Id");
@@ -200,11 +200,12 @@ import java.util.ArrayList;
 									//Search Patients by Mobile Number
 									System.out.println("Enter Patients Mobile Number");
 									String avail1=u.ipstring();
-									alp=f1.FindByava1(alp,avail1);
+									alp=f1.FindByAval(alp,avail1);
 									System.out.println(alp);
 									break;
 							case 4:
 									System.exit(0);
+									
 							default:
 									System.out.println("Invalid choice");
 									break;
