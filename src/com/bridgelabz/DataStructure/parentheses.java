@@ -1,17 +1,14 @@
 package com.bridgelabz.DataStructure;
-
 import com.bridgelabz.utility.Utility;
 
-public class parentheses {
-
-	
-		public static void main(String[] args) 
+public class parentheses 
+{
+	public static void main(String[] args) 
 		{
 			Utility u=new Utility();
 			System.out.println("Enter max size: ");
 			int n=u.ipnumber();
-		
-
+			
 			/* Creating Stack */     
 			Stackclass stack = new Stackclass (n);
 			System.out.println("Enter expression: ");
@@ -32,19 +29,15 @@ public class parentheses {
 					{
 						try
 						{
-						long p = (stack.pop() + 1);
+						long p = (stack.pop() );
 						System.out.println("')' at index "+(i+1)+" matched with '(' at index "+p);
-					
-						}
+					    }
 						catch(Exception e)
 						{
 						System.out.println("')' at index "+(i+1)+" is unmatched");
-						
 						}
-						
-					} 
-				
-				}
+						} 
+			}
 			if (!stack.isEmpty() )
 			{
 			System.out.println("'(' at index "+(stack.pop() +1)+" is unmatched");

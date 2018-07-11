@@ -19,6 +19,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+
 import DSbanking.Queue;
 import Regex.userdetails;
 
@@ -32,6 +34,7 @@ public class Utility
 	private final String DATE = "2017/06/30 10:50:55";
 	private static final char[] Array2D = null;
 	private static final String MagicNumber = null;
+	private static final int String = 0;
 	static Random rand=new Random();
 	static Scanner scanner=new Scanner(System.in);
 	public static String ipstring()
@@ -100,16 +103,20 @@ public class Utility
 	 System.out.println("enter username");
 	 String name = ipstring();
 	 username=username.replaceAll(username, name);
-	 System.out.println("hello "+username+" , How are you?");
-	}
+	  try{
+	   int x = Integer.parseInt(username);
+	   System.out.println("inValid input use only string");
+	 }catch(NumberFormatException e)
+	  {
+		 System.out.println("hello "+username+" , How are you?");
+	  } 
+	 }
 	
 	//[2] flipcoin
 	public static void  Flipcoin(int numtime)
 	{
 		int headcount=0,tailcount=0;
 		double per1,per2;
-		
-		
 		for(int i=0;i<numtime;i++)
 		{
 			double val=getrandomdouble();
@@ -123,8 +130,7 @@ public class Utility
 		per1=(double)tailcount/numtime*100;
 		per2=(double)headcount/numtime*100;
 		System.out.println("percentage of tailcount is"+per1);
-		System.out.println("percentage of headcount is"+per2);
-		
+		System.out.println("percentage of headcount is"+per2);	
 	}
 	
 	//[3] LeapYear
@@ -173,7 +179,6 @@ public class Utility
 			num=num+(1.0/i);
 			System.out.println("1/"+i+"=" +num);
 		}
-		
 	}
 	
 	//[6] PrimeFactor
@@ -205,7 +210,6 @@ public class Utility
 	
 	//[7] Gambler
 	public void Gambler(int trails) 
-
 	{
 		int stake=25;
 		int goals=200;
@@ -235,13 +239,14 @@ public class Utility
 	//[8] CouponNumber 
 	public int CouponGenerate(int num)
 		{
-			 
-			 boolean[] isCollected=new boolean[num];
+		boolean[] isCollected=new boolean[num];
 			 int f=0;
 			 int count=0;
 			 while(f<num)
 			 {
 			 int value=(int)(Math.random()*num);
+			 //System.out.println("value"+value);
+			 
 			 count++;
 			 if(!isCollected[value])
 			 {
@@ -306,8 +311,6 @@ public class Utility
 	{
 		double dis=(double) (Math.pow(x, 2)+Math.pow(y, 2));
 		double OrignDistance=(double)(Math.sqrt(dis));
-	
-		
 		return OrignDistance;
 	}
 	
@@ -319,7 +322,6 @@ public class Utility
 		int Secondroot=(int)((-b-Math.sqrt(delta))/2*a);
 		System.out.println("First sqare root is "+Firstroot);
 		System.out.println("Second sqare root is "+Secondroot);
-		
 	}
 	
 	//[16] WindChill
@@ -355,16 +357,12 @@ public class Utility
 	
 	
 	//[2] Prime numbers
-	public static int Primenumber() {
-
-		{
-
-			int   x , i , f ;
-			
+	public static int Primenumber() 
+	{
+		int   x , i , f ;
 			System.out.println( "Prime Number List = " );
 			for( x = 1 ; x <= 1000 ; x++ ) 
 			{
-
 				f = 0 ;
 
 				for( i=2 ; i < x ; i++ )
@@ -378,13 +376,9 @@ public class Utility
 				}
 				if( x == i )
 				{
-
-				   System.out.print( x + "\t" );
-				  
+					System.out.print( x + "\t" );
 				}
-		
-				}
-			}
+		}
 		return 0;
 		}
 	
@@ -392,13 +386,10 @@ public class Utility
 	public void PrimeAngpali() 
 
 	{
-
 		int   x , i , f ;
-		
 		System.out.println( "Prime Number List = " );
 		for( x = 1 ; x <= 1000 ; x++ ) 
 		{
-
 			f = 0 ;
 
 			for( i=2 ; i < x ; i++ )
@@ -412,7 +403,6 @@ public class Utility
 			}
 			if( x == i )
 			{
-				
 				int no =  x;
 				int s   =  0;
 
@@ -424,13 +414,9 @@ public class Utility
 				}		
 				if( x == s )
 				{
-				
-			
-			   	System.out.print( x + "\t" );		
+				System.out.print( x + "\t" );		
 			}
-			
-		
-	}
+			}
 		}
 	}
 	
@@ -445,9 +431,6 @@ public class Utility
 		int count=0;
 		for(i=0;i<N;i++)
 		{
-			
-		
-			
 			if(ans.equals("high"))
 			{
 				lowerbound=middle;
@@ -474,11 +457,10 @@ public class Utility
 							ans=scanner.next();
 						}
 					}
-		}
+				}
 	
 	//[7] Insertion Sort
 	public String[] insertionsort(int s)
-
 	{
 		String arr[]=new String[s];
 		System.out.println("enter elements in strings");
@@ -506,6 +488,7 @@ public class Utility
 		}	
 		return arr;
 	}
+	
 	public String[] insertionsortSrting(String[] s)
 	{
 		int n=s.length;         		
@@ -531,12 +514,13 @@ public class Utility
 		return s;
 	}
 	
+	
 	//[8] Bubble sort
 	public void bubblesort(int n) 
 	{
 		int i,j;
 		int  str[ ] = new int[ n] ;
-		System.out.println("Enter elements in array");
+		System.out.println("Enter numbers in array");
 		for(i=0 ; i<n ; i++ )
 		{
 			str[ i ] = scanner.nextInt( );
@@ -598,8 +582,8 @@ public class Utility
 		double x;
 		double m0;
 		int day;
-		y0 = y-(1 -m) / 12;
-		x = y0 + y0/4-y0/100 + y0/400;
+		y0 = y-(1-m)/12;
+		x = y0 + y0/4-y0/100+y0/400;
 		m0 = m+12*((14-m)/12)-2;
 		day = (int) ((d + x + 31*m0/12)%7);
 		System.out.print(day+" ");
@@ -608,7 +592,8 @@ public class Utility
 	
 	
 	//[12] Temperature conversion
-	public int tempconv(int temp) {
+	public int tempconv(int temp)
+	{
 		int choice;
 		int F = 0;
 		  System.out.println(" 1 to convert into Celsius");
@@ -639,10 +624,6 @@ public class Utility
 		R1=R/(12*100);
 		payment=(P*R1)/(1-(Math.pow((1+R1),-n)));
 		System.out.println("MOnthly payment you have ="+payment);
-		
-	
-		
-	
 	}
 	
 	//[14] sqrt number
@@ -658,6 +639,7 @@ public class Utility
         System.out.println(t);
 	}
 	
+	
 	//[15] dec to binary
 	public String Binary(int m)
 	{
@@ -670,9 +652,11 @@ public class Utility
         {
             a = m % 2;
             if(a == 1)
+            
             {
                 count++;
             }
+            
             x = x + "" + a;
             m = m / 2;
         }
@@ -734,7 +718,8 @@ public class Utility
 	
 	
 			}
-	 
+	
+	
 	//[1] unordered
 	public void unorderd( ) 
 
@@ -808,8 +793,9 @@ public class Utility
 			{
 				System.out.println("error = "+e);
 			}
-}
+		}
 
+	
 	//[2] ordered list
 	public void Orderd()
 	 
@@ -889,6 +875,7 @@ public class Utility
 	}	
 	}
 	
+	
 	//[5] Palindrome
 	public void  palindrome(String str)
 	{
@@ -941,6 +928,7 @@ public class Utility
 		}
 	}
 
+	
 	//[8] calender
 	public static boolean isleapyear(int year)
 	{
@@ -970,6 +958,8 @@ public class Utility
 	       return d;
 	 
 	}
+	
+	
 	//[4] banking
 	public void UtilityBanking(Queue q, int balance, int person) {
 		int count=0;
@@ -1000,12 +990,26 @@ public class Utility
 		if(withdrawal<balance) {
 		balance=balance-withdrawal;
 		System.out.println("Balance is "+balance);
+		}class QNode 
+		{
+			public int data;
+			
+
+			public QNode next;
+
+			public QNode(int data) {
+				
+			
+				this.data = data;
+				this.next = null;
+			}
 		}
-		else {
+		/*else 
+		{
 		System.out.println("Insufficient balance");
 		}
 		break;
-
+		 */
 		case 3 :System.out.println("Current balance is "+balance);
 		break;
 
@@ -1396,11 +1400,201 @@ private void merge(int[] arr, int lower, int middle, int upper)
 	}
 		
 }
-}
-	
 
+
+/*private void quePrimeAna(int[] x) 
+{
+	QuePrimeAnagram qp = new QuePrimeAnagram();
+	for (int i = 0; i < x.length; i++) 
+	{
+		if (x[i] != 0) {
+			qp.enQue(x[i]);
+		}
+	}
+	for (int i = 0; i < x.length; i++)
+	{
+		//qp.deQue();
+		//System.out.println(qp.deQue().data);
+	}
+}
+
+
+}
+
+public Object QNode(int data) 
+{
+		public int data;
+		public QNode next;
+		public Object QNode1(int data) 
+		{
+			this.data = data;
+			this.next = null;
+		}
+
+}
+
+*/
+//-------------------------------------
+public boolean binarysearchInt(int[] array, int number) 
+{
+	int upper=array.length;
+	int lower=0;
+	int x=array.length;
+	int middle=(upper+lower)/2;
+	for(int i=0;i<array.length;i++)
+    {
+    	if(number>array[middle])
+    	{
+    		lower=middle;
+    	}
+    	else if(number==array[middle])
+    	{
+    		return true;
+    	}
+    	else if(number<array[middle])
+    	{
+    		upper=middle;
+    	}
+    	while(x>0)
+    	{
+    		middle=(upper+lower)/2;
+    		x--;
+    		break;
+    	}
+    }
+	return false;
+}
+public boolean binarysearchStr(String[] str, String str1) 
+{
+	int upper=str.length;
+	int lower=0;
+	int x=str.length;
+	int middle=(upper+lower)/2;
+	for(int i=0;i<str.length;i++)
+    {
+    	if(str1.compareTo(str[middle])>0)
+    	{
+    		lower=middle;
+    	}
+    	else if(str1.equals(str[middle]))
+    	{
+    		return true;
+    	}
+    	else if(str1.compareTo(str[middle])<0)
+    	{
+    		upper=middle;
+    	}
+    	while(x>0)
+    	{
+    		middle=(upper+lower)/2;
+    		x--;
+    		break;
+    	}
+    }
+	return false;
+}
+public int[] insertionsortInt(int[] input, int data) 
+{
+	int i,j;
+	int key;
+	System.out.println(Arrays.toString(input));
+    for (j = 1; j < data; j++) {
+        key = input[j];
+        i = j - 1;
+        while (i >= 0) {
+            if (key>input[i]) {
+                break;
+            }
+            input[i+1] = input[i];
+            i--;
+        }
+        input[i+1] = key;
+        System.out.println(Arrays.toString(input));
+    }
+    return input;
+}
+public void bubblesortStr(String[] arr) 
+{
 	
+	int i,j;
+	int n=arr.length;
+	for(i=0;i<n-1;i++)
+	{
+		for(j=0;j<n-i-1;j++)
+		{
+			if(arr[j].compareTo(arr[j+1])>0)
+			{
+			String temp=arr[j];
+			arr[j]=arr[j+1];
+			arr[j+1]=temp;
+			}
+		}
+	}
+	System.out.println("Sorted array is = ");
+	for(i=0;i<n;i++)
+	{
+		System.out.println(arr[i]);
+	}
 	
+}
+
+public int[] bubblesort(int[] arr) 
+{
+	int i,j;
+	int n=arr.length;
+	for(i=0;i<n-1;i++)
+	{
+		for(j=0;j<n-i-1;j++)
+		{
+			if(arr[j]>arr[j+1])
+			{
+			int temp=arr[j];
+			arr[j]=arr[j+1];
+			arr[j+1]=temp;
+			}
+		}
+	}
+	System.out.println("Sorted array is = ");
+	for(i=0;i<n;i++)
+	{
+		System.out.println(arr[i]);
+	}
+	return arr;
+}
+
+public String[] insertionsort(String[] input,int data) 
+{
+	int i,j;
+	String key;
+	System.out.println(Arrays.toString(input));
+    for (j = 1; j < data; j++) {
+        key = input[j];
+        i = j - 1;
+        while (i >= 0) {
+            if (key.compareTo(input[i]) > 0) {
+                break;
+            }
+            input[i+1] = input[i];
+            i--;
+        }
+        input[i+1] = key;
+        System.out.println(Arrays.toString(input));
+    }
+    return input;
+}
+
+public String[] getString(int data) {
+	String string[]=new String[data];
+	System.out.println("enter your string");
+	for(int i=0;i<data;i++)
+	{
+		
+		string[i]=ipstring();
+	}
+	return string;
+	
+}
+}
 	 
 
 	

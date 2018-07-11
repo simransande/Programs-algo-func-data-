@@ -10,7 +10,8 @@ public class userdetails
 		public userdetails()
 		{
 		}
-//getter and setter methods
+		
+		//getter and setter methods
 		public void setfName(String firstName)
 		{
 			this.firstName=firstName;

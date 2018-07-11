@@ -27,6 +27,7 @@ k++;
 }
 }
 }
+   
     int j1 = 0;
     int n=AnaPrimes.length;
     for (int i1 = 0; i1 < n-1; i1++)
@@ -42,31 +43,31 @@ int q=0;
 int r=0;
 int r1=0;
 for(int w=0;w<primes.length;w++)
-{
-if(primes[w]!=AnaPrimes[q])
-{
-allprimes2d[r][0]=primes[w];
-r++;
-}
+	{
+	if(primes[w]!=AnaPrimes[q])
+	{
+		allprimes2d[r][0]=primes[w];
+		r++;
+	}
 else
-{
-allprimes2d[r1][1]=primes[w];
-q++;
-r1++;
+	{
+	allprimes2d[r1][1]=primes[w];
+	q++;
+	r1++;
+	}
 }
-}
-for(int l=0;l<r;l++)
-{
-for(int c=0;c<2;c++)
-{
-if(allprimes2d[l][c]!=0) 
-{
-System.out.print(allprimes2d[l][c]+" "); 
-}
+	for(int l=0;l<r;l++)
+	{
+		for(int c=0;c<2;c++)
+		{
+			if(allprimes2d[l][c]!=0) 
+			{
+				System.out.print(allprimes2d[l][c]+" "); 
+			}
 
-}
-System.out.println(" ");
-}
+		}	
+		System.out.println(" ");
+	}
 
-}
+	}
 }

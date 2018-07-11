@@ -11,6 +11,5 @@ public class PrimeFactor
 		System.out.println("Enter the number you want to fing Primefactors");
 		number=u.ipnumber();
 		u.Primefact(number);
-		
 	}
 }

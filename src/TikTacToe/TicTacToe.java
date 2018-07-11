@@ -45,6 +45,7 @@ public class TicTacToe
     /* Check if player wins.  Check right after X makes a play 
      * 
      */
+    	
     public Boolean checkWinner(String play)
     {
         int playInRow = 0;
@@ -54,6 +55,7 @@ public class TicTacToe
         for (int i = 0; i < board.length; i++)
         {
             playInRow = 0;
+            
             for (int j = 0; j < board[i].length; j++)
             {
                 if (null == board[i][j]) 
@@ -104,7 +106,7 @@ public class TicTacToe
             c = 0;
             System.out.println ("Enter coordinates to play your " + play);
             if (stdin.hasNextInt()) 
-            {  // must be integers
+            {  
                 r = stdin.nextInt();
             }
             if (stdin.hasNextInt()) 
