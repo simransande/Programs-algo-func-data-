@@ -1,6 +1,7 @@
 package com.bridgelabz.DataStructure;
 
-public class Stackclass  {
+public class Stackclass  
+{
 	
 		private int maxSize;
 		private long[] stackArray;
@@ -42,7 +43,9 @@ public class Stackclass  {
 		public boolean isFull()
 		{
 		return (top == maxSize - 1);
+		
 		}
-	}
+	
+}
 
 

@@ -2,6 +2,7 @@ package com.bridgelabz.utility;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
@@ -162,19 +163,28 @@ public class Utility {
 	public void Primefact(int number) {
 		int fact;
 		int j;
+		int f=0;
 		for (int i = 2; i < number; i++) {
 			int n = i;
 			for (j = 2; j <= n; j++) {
-				if (n % j == 0) {
+				if (n % j == 0)
+				{
 					break;
 				}
 			}
 			if (j == n) {
-				if (number % n == 0) {
+				if (number % n == 0) 
+				{
 					System.out.println(n);
+					f++;
 				}
 			}
 		}
+			if(f==0)
+			{
+				System.out.println("prime factror is its own number that is :"+number);
+			}
+		
 	}
 
 	// [7] Gambler
@@ -299,7 +309,8 @@ public class Utility {
 	}
 
 	// [2] Prime numbers
-	public static int Primenumber() {
+	public static int Primenumber()
+	{
 		int x, i, f;
 		System.out.println("Prime Number List = ");
 		for (x = 1; x <= 1000; x++) {
@@ -318,7 +329,8 @@ public class Utility {
 		}
 		return 0;
 	}
-
+	
+	
 	// [3] PRime Anagram and Palindrom
 	public void PrimeAngpali()
 
@@ -478,18 +490,17 @@ public class Utility {
 	}
 
 	// [11] Day of week
-	public int DayOfWeek(int d, int m, int y) {
-		double y0;
-		double x;
-		double m0;
-		int day;
-		y0 = y - (1 - m) / 12;
-		x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
-		m0 = m + 12 * ((14 - m) / 12) - 2;
-		day = (int) ((d + x + 31 * m0 / 12) % 7);
-		System.out.print(day + " ");
-		return day;
+	
+	 public static int dayOfWeek(int d, int m, int y) {
+		// System.out.println("Entered date is : " + month + "/" + date + "/" +
+		// year);
+		int y0 = y - (14 - m) / 12;
+		int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+		int m0 = m + 12 * ((14 - m) / 12) - 2;
+		int d0 = (d + x + 31 * m0 / 12) % 7;
+		return d0;
 	}
+	 
 
 	// [12] Temperature conversion
 	public int tempconv(int temp) {
@@ -664,73 +675,75 @@ public class Utility {
 	}
 
 	// [2] ordered list
-	public void Orderd()
-
+	
+	public void OrderdList()
 	{
-		int x[] = new int[1000];
-		int size, i;
+	
+			int x[] = new int[1000];
+			int size, i;
 
-		Scanner sc = new Scanner(System.in);
-		try {
-			File f = new File("number.txt");
+			Scanner sc = new Scanner(System.in);
+			try {
+				File f = new File("number.txt");
 
-			if (!f.exists()) {
-				System.out.println("number.txt file is unavailable.... ");
-				return;
-			}
-			FileReader in = new FileReader(f);
-			BufferedReader br = new BufferedReader(in);
-			i = 0;
-			String str = "";
-			while ((str = br.readLine()) != null) {
-				x[i] = Integer.parseInt(str);
-				System.out.println(x[i]);
-				i++;
-			}
-
-			size = i;
-			LinkedList ob = new LinkedList();
-			for (i = 0; i < size; i++) {
-				ob.add(x[i]);
-				System.out.println(x[i]);
-			}
-
-			Collections.sort(ob);
-
-			Iterator<Integer> il = ob.iterator();
-
-			while (il.hasNext()) {
-				System.out.println(il.next());
-			}
-
-			int num;
-
-			System.out.println("enter new number = ");
-			num = sc.nextInt();
-			int pos = ob.indexOf(num);
-
-			if (pos != -1) {
-				ob.remove(pos);
-				System.out.println("number found in lis, list after poping = ");
-				il = ob.iterator();
-				while (il.hasNext()) {
-					System.out.println(il.next());
+				if (!f.exists()) {
+					System.out.println("number.txt file is unavailable.... ");
+					return;
 				}
-			} else {
-				ob.add(num);
+				FileReader in = new FileReader(f);
+				BufferedReader br = new BufferedReader(in);
+				i = 0;
+				String str = "";
+				while ((str = br.readLine()) != null) {
+					x[i] = Integer.parseInt(str);
+					System.out.println(x[i]);
+					i++;
+				}
+
+				size = i;
+				LinkedList ob = new LinkedList();
+				for (i = 0; i < size; i++) {
+					ob.add(x[i]);
+					System.out.println(x[i]);
+				}
+
 				Collections.sort(ob);
-				System.out.println("number found in lis, list after adding = ");
-				il = ob.iterator();
+
+				Iterator<Integer> il = ob.iterator();
+
 				while (il.hasNext()) {
 					System.out.println(il.next());
 				}
+
+				int num;
+
+				System.out.println("enter new number = ");
+				num = sc.nextInt();
+				int pos = ob.indexOf(num);
+
+				if (pos != -1) {
+					ob.remove(pos);
+					System.out.println("number found in lis, list after poping = ");
+					il = ob.iterator();
+					while (il.hasNext()) {
+						System.out.println(il.next());
+					}
+				} else {
+					ob.add(num);
+					Collections.sort(ob);
+					System.out.println("number found in lis, list after adding = ");
+					il = ob.iterator();
+					while (il.hasNext()) {
+						System.out.println(il.next());
+					}
+				}
+
+			} catch (Exception e) {
+				System.out.println("error = " + e);
 			}
-
-		} catch (Exception e) {
-			System.out.println("error = " + e);
 		}
-	}
 
+	
 	// [5] Palindrome
 	public void palindrome(String str) {
 
@@ -959,15 +972,15 @@ public class Utility {
 			System.out.println(str);
 		
 		}else {
-			for (int i = l; i <= r; i++) {
+			for (int i = l; i <= r; i++) 
+				
+				{
 				str = swap1(str, l, i);
 				permute1(str, l + 1, r);
 				str = swap1(str, l, i);
 				}
 		}
 	}
-
-	
 	public String swap1(String a, int i, int j) 
 	{
 		char temp;
@@ -1126,6 +1139,7 @@ public class Utility {
 		}
 	}
 
+	
 	private void merge(int[] arr, int lower, int middle, int upper) {
 		// TODO Auto-generated method stub
 		int n1 = middle - lower + 1;
@@ -1325,6 +1339,161 @@ public class Utility {
 			}
 		}
 	}
+	
+	
+	//Stock report [3]
+	public static FileReader fileRead(String string2) {
+		 
+		        FileReader f = null;
+		        try {
+		            f = new FileReader(string2);
+		        } catch (FileNotFoundException e) {
+		       
+		            e.printStackTrace();
+		        }
+		        return f;   
+		
+	}
 
 	
+		
+		 public static void stockReport(FileReader fileRead) throws IOException,ParseException, org.json.simple.parser.ParseException
+		    {
+		        JSONParser parse=new JSONParser();
+		        int total = 0;
+		        JSONObject object=(JSONObject) parse.parse(fileRead);
+		        //System.out.println(object);
+		        Iterator<?> iterator=object.keySet().iterator();
+		        while(iterator.hasNext())
+		        {
+		            String topkey=(String)iterator.next();
+		            JSONObject obj=(JSONObject) object.get(topkey);
+		            System.out.println("Company name:"+topkey);
+		            long price=(Long) obj.get("Price");
+		            long num=(Long) obj.get("NumShare");
+		            total+=price*num;
+		            
+		            System.out.println("Price:"+price);
+		            System.out.println("Number Of Shares:"+num);
+		            System.out.println("Total Stock is:"+price*num);
+		            System.out.println();
+		        }
+		        System.out.println("Total amount of shares is:"+total);
+		    }
+
+		
+		 
+		// Rice pulses and wheat report (inventory management) [1]
+		 
+			public static FileReader fileRead1(String string2) {
+				 
+		        FileReader f = null;
+		        try {
+		            f = new FileReader(string2);
+		        } catch (FileNotFoundException e) {
+		       
+		            e.printStackTrace();
+		        }
+		        return f;   
+
+		}
+
+			public static void RisePulseWheat(FileReader fileRead1) throws IOException, ParseException, org.json.simple.parser.ParseException {
+		        JSONParser parse=new JSONParser();
+		        JSONObject object=(JSONObject) parse.parse(fileRead1);
+		        //System.out.println(object);
+		        int total=0;
+		        Iterator<?> iterator=object.keySet().iterator();//Keys of Object(rice,wheat,pulses)
+		        while(iterator.hasNext())
+		        {
+		            String toppkey=(String)iterator.next();
+		            JSONObject obj=(JSONObject) object.get(toppkey);
+		            Iterator<?> iterate = obj.keySet().iterator();//keys of each specific object
+		            while(iterate.hasNext())
+		            {
+		                String key=(String) iterate.next();
+		                System.out.println(key+":"+obj.get(key));
+		            }
+		            Integer amount=(Integer.parseInt(obj.get("Price").toString())) * (Integer.parseInt(obj.get("Weight").toString()));
+		            System.out.println("The total cost of "+obj.get("Name")+" is: "+amount);
+		            System.out.println();
+		            total=total+amount;       
+		    }
+		        System.out.println("The total Amount of inventory is:"+total);
+		}	
+	}
+
+	/*public static void QueuePrimeAnagram() 
+	{
+		
+			int array[][]=PrimeAnagram2D();
+			QueueLinkList queue=new QueueLinkList();
+			System.out.println("----------------------------------");
+			System.out.println("Prime Anagram using Queue");
+			System.out.println("----------------------------------");
+			for (int i = 0; i < 10; i++) 
+			{
+				for (int j = 0; j < 30; j++) 
+				{
+					 if(array[i][j]>0 && array[i][j]<1000)
+	                 {
+	                    queue.insert(array[i][j]+"\t");
+	                     //System.out.print(a[i][j]+"\t");   
+	                 }
+					
+				}
+				 queue.insert("\n");
+			}
+			queue.display();
+
+		
+	}
+*/
+	
+
+	//calender Queue
+
+	/*public static void CalendarQueue(int month,int year)
+{
+    QueueLinkList weekday=new QueueLinkList();
+    String[] months = {"January", "February", "March","April", "May", "June",
+            "July", "August", "September","October", "November", "December"};
+
+        int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        if ((month == 2) && (isLeapOrNot(year)))
+        {
+            days[month] = 29;
+        }
+        System.out.println("\t\t\t" + months[month-1] + " " + year);
+        System.out.println("\tSun\tMon\tTue\tWed\tThu\tFri\tSat");
+        int d = dayOfWeek(month, 1, year);
+        for(int i=0;i<d;i++)
+        {
+            weekday.insert("\t");
+        }
+        for (int i = 1; i <= days[month-1]; i++)
+        {
+            //System.out.printf("%2d ", i);
+            weekday.insert("\t"+i);
+            if (((i + d) % 7 == 0) || (i == days[month-1]))
+            weekday.insert("\n");
+        }
+        weekday.display();
 }
+
+	private static boolean isLeapOrNot(int year)
+	{
+	        if(year%4==0 || year%400==0 && year%100!=0)
+	        {
+	            System.out.println("Is a Leap Year");
+	            return true;
+	        }
+	        else
+	        {
+	            System.out.println("Is not a Leap Year");
+	            return false;
+	        }
+	
+}
+}
+*/

@@ -10,10 +10,13 @@ public class Hashing
 			{
 				int remainder=ipArray[i]%11;
 				if(data[remainder]==null)
+				
 				{
 					data[remainder]=new Orderedlist();
 					data[remainder].addItem(ipArray[i]);
+				
 				}
+				
 				else
 					data[remainder].addItem(ipArray[i]);
 			}

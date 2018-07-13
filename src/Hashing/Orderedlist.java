@@ -11,7 +11,7 @@ public class Orderedlist
    Node start;
    NodeUtility nu=new NodeUtility();
    Utility u1=new Utility();
-private int[] sortArrays;
+   	private int[] sortArrays;
 
    // get data From a fle
    void getDataFromFile()
@@ -76,7 +76,7 @@ private int[] sortArrays;
            temp=temp.nextNode;
            count++;
        }
-       System.out.println("sizze of Linked List"+count);
+      // System.out.println("sizze of Linked List"+count);
        return count;
   }
 
@@ -107,12 +107,12 @@ private int[] sortArrays;
        else
        {
            addItem(s);
-           System.out.println("After Adding a LIst ");
+           System.out.println("After Adding,list is: ");
            display();
        }
    }
 
-   // removeWord From a Linked lIst
+   // removeNUMBER From a Linked lIst
    void removeData(int count)
    {
        Node temp = start;
@@ -124,12 +124,12 @@ private int[] sortArrays;
        }
        else
        {
-    for(int i=0;i<count-1;i++)
+    for(int i=1;i<count-1;i++)
     {
 temp=temp.nextNode;
     }
        temp.nextNode =temp.nextNode.nextNode;
-       System.out.println("After Deleting LIst is ");
+       System.out.println("After Deleting, List is: ");
        display();
        }
    }

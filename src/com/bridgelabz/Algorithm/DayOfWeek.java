@@ -12,7 +12,7 @@ import com.bridgelabz.utility.Utility;
 	  m=u.ipnumber();
 	  System.out.println("Enter year:");
 	  y=u.ipnumber();
-	  int ans=u.DayOfWeek(d,m,y);
+	  int ans=u.dayOfWeek(d,m,y);
 	  switch(ans)
 	  {
 	  case 1 : 

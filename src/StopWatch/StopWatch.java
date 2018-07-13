@@ -16,8 +16,8 @@ public class StopWatch
 			System.out.println("Press 2 to stop the timer");
 			u.ipnumber();
 			usw.stop();
-			long elasped=usw.elaspedTime();
-			System.out.println("Elasped time :"+elasped);
+			double elasped=usw.elaspedTime();
+			System.out.println("Elasped time :"+elasped+" sec.");
 		}
 		
 	}
