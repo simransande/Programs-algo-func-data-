@@ -1420,8 +1420,50 @@ public class Utility {
 		            total=total+amount;       
 		    }
 		        System.out.println("The total Amount of inventory is:"+total);
-		}	
-	}
+		}
+
+			
+			//Inventory management by manager [4]
+			
+			public static FileReader fileRead2(String string2) {
+				 
+		        FileReader f = null;
+		        try {
+		            f = new FileReader(string2);
+		        } catch (FileNotFoundException e) {
+		       
+		            e.printStackTrace();
+		        }
+		        return f;   
+
+		}
+		
+				public static void InventoryManager(FileReader fileRead2) throws IOException, ParseException, org.json.simple.parser.ParseException {
+			        JSONParser parse=new JSONParser();
+			        JSONObject object=(JSONObject) parse.parse(fileRead2);
+			        //System.out.println(object);
+			        int total=0;
+			        Iterator<?> iterator=object.keySet().iterator();//Keys of Object(rice,wheat,pulses)
+			        while(iterator.hasNext())
+			        {
+			            String topkey=(String)iterator.next();
+			            JSONObject obj=(JSONObject) object.get(topkey);
+			            Iterator<?> iterate = obj.keySet().iterator();//keys of each specific object
+			            while(iterate.hasNext())
+			            {
+			                String key=(String) iterate.next();
+			                System.out.println(key+":"+obj.get(key));
+			            }
+			            Integer amount=(Integer.parseInt(obj.get("Price").toString())) * (Integer.parseInt(obj.get("Weight").toString()));
+			            System.out.println("The total cost of "+obj.get("Name")+" is: "+amount);
+			            System.out.println();
+			            total=total+amount;       
+			    }
+			        System.out.println("The total Amount of inventory is:"+total);
+			    }
+				
+			}	
+	
 
 	/*public static void QueuePrimeAnagram() 
 	{
