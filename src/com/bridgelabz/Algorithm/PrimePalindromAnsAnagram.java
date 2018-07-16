@@ -10,7 +10,6 @@ public class PrimePalindromAnsAnagram
 		int x,y,z;
 		Utility u=new Utility();
 		System.out.println("Prime number list:");
-		
 		u.PrimeAngpali();
 		
 	}

@@ -5,18 +5,16 @@ public class TicTacToe
     private String[][] board; 
     static String X = "X";
     static String O = "O";    
-    /**
-     * Constructor for objects of class TicTacToe
-     */
+    
     public TicTacToe()
     {
         // initialize instance variables
         board = new String[3][3]; 
     }
 
-    /**
-     * Print out the tictactoe board
-     */
+    
+    // Print tictactoe board
+    
     public void printBoard()
     {
         System.out.println();
@@ -42,9 +40,8 @@ public class TicTacToe
          }
          System.out.println();
     }
-    /* Check if player wins.  Check right after X makes a play 
-     * 
-     */
+   
+    //playerr wins checking
     	
     public Boolean checkWinner(String play)
     {
@@ -61,6 +58,7 @@ public class TicTacToe
                 if (null == board[i][j]) 
                 {
                     continue;
+                    
                 }
                 if (board[i][j].equals(play))
                 {
@@ -69,10 +67,13 @@ public class TicTacToe
                     if (i == j)
                     {
                         player1++;
+                       // System.out.println();
                     }
                     else if (2 == i + j)
                     {
                         player2++;
+                        //System.out.println();
+                        
                     }
                  }
                }
@@ -81,10 +82,12 @@ public class TicTacToe
                 return true;
             }
         }
+        
         if (3 == player1 || 3 == player2) 
         {
             return true;
         }
+        
         for (int i = 0; i < playInColumn.length; i++) 
         {
             if (playInColumn[i] == 3) 
@@ -128,7 +131,7 @@ public class TicTacToe
             // make sure the space is not occupied
             else if (board[r][c] != null )
             {  
-                System.out.println("That location is occupied");
+                System.out.println("\n That location is occupied");
                 continue; 
             }
             else
@@ -161,6 +164,7 @@ public class TicTacToe
                    break;
                 }
             }
+            
             ttt.printBoard();
             ttt.makeMove(stdin, ttt.O);
             moves++;

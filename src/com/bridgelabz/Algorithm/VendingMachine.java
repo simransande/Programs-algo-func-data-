@@ -39,11 +39,11 @@ public class VendingMachine
   	// Starting Main Function
 	public static void main(String[] args)
 	{
-        Utility u1=new Utility();
+        Utility u=new Utility();
 
 		//ask the user enter the money
 		System.out.print("Enter the Amount:");
-		money =u1.ipnumber();
+		money =u.ipnumber();
 
 		// Creating The Object of Vending MAchine class
 		VendingMachine.calculate(money,notes);

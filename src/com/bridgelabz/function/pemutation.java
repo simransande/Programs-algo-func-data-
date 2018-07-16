@@ -4,10 +4,10 @@ public class pemutation
 {
 	public static void main(String[] args) {
 		
-		Utility ut=new Utility();
+		Utility u=new Utility();
 		System.out.println("Enter a string to permute");
-		String str = ut.ipstring();
+		String str = u.ipstring();
 	        int n = str.length();
-	        ut.permute1(str, 0, n-1);
+	        u.permute1(str, 0, n-1);
 	}
 }
