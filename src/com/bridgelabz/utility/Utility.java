@@ -321,8 +321,9 @@ public class Utility {
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
 				System.out.print(x[i][j] + " ");
+				
 			}
-			System.out.println(" ");
+			 System.out.println("");
 		}
 	}
 
@@ -395,29 +396,7 @@ public class Utility {
 	}
 
 	// [2] Prime numbers
-	public static int Primenumber() {
-		int x, i, f;
-		System.out.println("Prime Number List = ");
-		for (x = 1; x <= 1000; x++) {
-			f = 0;
-
-			for (i = 2; i < x; i++) {
-				if (x % i == 0) {
-
-					f = 1;
-					break;
-				}
-			}
-			if (x == i) {
-				System.out.print(x + "\t");
-			}
-		}
-		return 0;
-	}
-
-	// [3] PRime Anagram and Palindrom
-	public void PrimeAngpali()
-
+	public static int Primenumber() 
 	{
 		int x, i, f;
 		System.out.println("Prime Number List = ");
@@ -432,21 +411,162 @@ public class Utility {
 				}
 			}
 			if (x == i) {
-				int no = x;
-				int s = 0;
-
-				while (no > 0) {
-					int r = no % 10;
-					s = s * 10 + r;
-					no = no / 10;
-				}
-				if (x == s) {
-					System.out.print(x + "\t");
-				}
+				System.out.print(x + "\t");
+				int [] newArray = new int[x];
 			}
+			
 		}
+		    return 0;
 	}
 
+	// [3] PRime Anagram and Palindrom
+	public int PrimeAnagramAndPalindrome()
+
+	{
+		System.out.println("1.Palindrome Prime numbers are:");
+		System.out.println("2.Anagram Prime numbers are:");
+		int x, i, f = 0;
+		int choice=ipnumber();
+		switch(choice)
+		{
+		case 1:
+			
+			//System.out.println("Prime Number List = ");
+			for (x = 1; x <= 1000; x++) {
+				f = 0;
+
+				for (i = 2; 	i < x; i++) {
+					if (x % i == 0) {
+
+						f = 1;
+						break;
+					}
+				}
+				if (x == i) 
+					{
+					{
+						int no = x;
+						int s = 0;
+
+						while (no > 0) {
+							int r = no % 10;
+							s = s * 10 + r;
+							no = no / 10;
+						}
+						if (x == s) {
+							System.out.print(x + "\t");
+						}
+					}
+					}
+			}
+			
+			break;
+			
+	
+			case 2:
+				
+			System.out.println("angrams of prime numbers are:");
+			int[] a = null;
+			int n = 0;
+			//int result=isPrime(a,n);
+				
+			break;
+		
+					}	
+		return f;
+
+
+}
+	
+	public static boolean isPrime (int number) {
+		  
+	     for(int i=2; i<=number/2; i++){
+	         if(number % i == 0){
+	             return false;
+	         }
+	     }
+	     return true;
+	    }
+	//Method for Prime Numbers
+	    public static int[] primeNumbers(int n)
+	    {
+	            int a[]=new int[n];int k=0;
+	            for(int i=0;i<n;i++)
+	            {
+	                if(isPrime(i))
+	                {
+	                    a[k]=i;
+	                    k++;
+	                }
+	            }
+	            int len=0;
+	            for (int i=0; i<a.length; i++)
+	                {
+	                    if (a[i] != 0)
+	                        len++;
+	                }
+	               
+	                int [] newArray = new int[len];
+	                int j=0;
+	                for (int i=0; i<a.length; i++)
+	                {
+	                    if (a[i] != 0) {
+	                        newArray[j] = a[i];
+	                        j++;
+	                    }
+	                }
+	                System.out.println();
+	              
+	              /*  for (int integer : newArray) {
+	                    System.out.println(integer);
+	                } */
+	            return newArray;
+	           
+	       
+	    }
+
+	//Method to display array
+	    public static void display(int array[])
+	    {
+	       
+	        for (int i = 0; i < array.length; i++) {
+	            System.out.print(array[i]+" ");
+	        }
+	        System.out.println();
+	    }
+
+	//Method to find prime anagram
+	    public static boolean FindAnagram(int[] out) {
+	        int len=out.length;
+	       boolean status=false;
+	        for(int i=0;i<len;i++)
+	        {
+	            for(int j=i+1;j<len;j++)
+	            {
+	                //System.out.println(out[i]+" "+out[j]);
+	          //  status=	 AnagramInteger(out[i],out[j]);
+	           
+	            }
+	        }
+	       return status;
+	    }
+	//Method to display anagram
+	    public static void displayangaram(boolean status) {
+			if(status)
+			{
+				System.out.println("Is Anagram");
+			}
+			else
+				System.out.println("Is Not Anagram");
+		}
+	//Method for integer anagram
+	  //  public static boolean AnagramInteger(int n1, int n2) {
+	   
+	    //    String num1=String.valueOf(n1);
+	     //   String num2=String.valueOf(n2);
+	     //  boolean status= Anagram(num1, num2);
+	      // return status;
+	    
 	// [5] Magic number
 	public void magicno(int N, int lowerbound, int upperbound, int middle) {
 		System.out.println("Is your number :" + middle);
@@ -917,9 +1037,12 @@ public class Utility {
 					break;
 
 				case 2:
+				{
 					System.out.println("Enter the amt to withdraw");
 					int withdrawal = ipnumber();
-					if (withdrawal < balance) {
+					if (withdrawal < balance) 
+					{
+
 						balance = balance - withdrawal;
 						System.out.println("Balance is " + balance);
 					}
@@ -934,10 +1057,13 @@ public class Utility {
 							this.next = null;
 						}
 					}
-					/*
-					 * else { System.out.println("Insufficient balance"); }
-					 * break;
-					 */
+					if(balance<500)
+					{
+						System.out.println("Insufficient balance");
+					}
+				}// else { System.out.println("Insufficient balance"); }
+					  break;
+				
 				case 3:
 					System.out.println("Current balance is " + balance);
 					break;
@@ -1544,7 +1670,90 @@ Integer amount = (Integer.parseInt(obj.get("Price").toString()))* (Integer.parse
 		System.out.println("The total Amount of inventory is:" + total);
 	}
 
+	public void stackPrimeAnagram(String string1, String string2) 
+	{
+		int x, i, f;
+		System.out.println("Prime Number List = ");
+		for (x = 1; x <= 1000; x++) {
+			f = 0;
+
+			for (i = 2; i < x; i++) {
+				if (x % i == 0) {
+
+					f = 1;
+					break;
+				}
+			}
+			if (x == i) {
+				int no = x;
+				int s = 0;
+
+				while (no > 0) {
+					int r = no % 10;
+					s = s * 10 + r;
+					no = no / 10;
+				}
+				if (x == s) {
+					System.out.print(x + "\t");
+				}
+			}
+		}
+	}
+
+	
 }
+	
+
+
+	
+	// OOP_Adress Book [11]
+	
+	/*public void addNewPerson() 
+	{
+		try
+		{
+			File file = new File("/adressBook.json");
+			
+			if(file.exists())
+			{
+				if(file.canRead() && file.canWrite())
+				{
+					FileReader fileReader = new FileReader(file);
+					JSONObject json=new JSONObject();
+					JSONParser parser=new JSONParser();
+					JSONArray array=(JSONArray) parser.parse(fileReader);
+					
+					JSONObject JSON=new JSONObject();
+					System.out.println("Enter the fisrt name:");
+					String name=ipstring();
+					
+					System.out.println("Enter the last name:");
+					String Lname=ipstring();
+					
+					System.out.println("Enter the adress:");
+					String Address=ipstring();
+					
+					System.out.println("Enter the name of city:");
+					String city=ipstring();
+					
+					System.out.println("Enter the name state");
+					String state=ipstring();
+					
+					System.out.println("Enter the ZIP");
+					String ZIP=ipnumber();
+					
+					System.out.println("Enter the mobile number");
+					String MbNo=ipnumber();
+				
+				}
+				
+	*/		
+		
+		// TODO Auto-generated method stub
+		
+		
+
+
 
 //
 
@@ -1588,3 +1797,4 @@ Integer amount = (Integer.parseInt(obj.get("Price").toString()))* (Integer.parse
  * 
  * } }
  */
+
