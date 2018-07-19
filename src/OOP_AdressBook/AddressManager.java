@@ -1,23 +1,19 @@
 package OOP_AdressBook;
+	import java.io.BufferedReader;
+	import java.io.File;
 
+	import java.io.FileReader;
 
+	import java.io.IOException;
+	import java.util.ArrayList;
+	import java.util.Scanner;
 
-import java.io.BufferedReader;
-import java.io.File;
-
-import java.io.FileReader;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
-
-import com.bridgelabz.utility.Utility;
-
+	import org.codehaus.jackson.JsonParseException;
+	import org.codehaus.jackson.map.JsonMappingException;
+	import org.codehaus.jackson.map.ObjectMapper;
+	import org.codehaus.jackson.type.TypeReference;
+	import com.bridgelabz.utility.Utility;
+	
 public class AddressManager implements AddressManagerInterface {
 	ObjectMapper objectMapper = new ObjectMapper();
 	AddressBookInterface addressbook=new AddressBook();

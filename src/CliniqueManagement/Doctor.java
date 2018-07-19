@@ -1,74 +1,57 @@
 package CliniqueManagement;
 
+public class Doctor {
 
-	import com.bridgelabz.utility.Utility;
 
-	public class Doctor 
-	{
-		int DrId;
-		String DrName;
-		String avail;
-		String spec;
-		Utility u1;
+		// Name, Id, Specialization and Availability (AM, PM or both)
+		private String dname;
+		private String specialist;
+		private String availability;
+		private int doctorId;
+		private int patientCount;
 
-		//getter and setter methods
-		public int getDrId() 
-		{
-			return DrId;
+		public Doctor() {
+			
 		}
-		public void setDrId(int DrId) 
-		{
-			this.DrId = DrId;
-		}
-		public String getDrName() 
-		{
-			return DrName;
-		}
-		public void setDrName(String DrName) 
-		{
-			this.DrName = DrName;
-		}
-		public String getAvail() 
-		{
-			return avail;
-		}
-		public void setAvail(String avail) 
-		{
-			this.avail = avail;
-		}
-		public String getSpec() {
-			return spec;
-		}
-		public void setSpec(String spec) 
-		{
-			this.spec = spec;
-		}
-		//toString method
-		public String toString() 
-		{
-			return "Doctor [did=" + DrId + ", dname=" + DrName + ", avail=" + avail + ", spec=" + spec + "]";
-		}
-		//to add doctor details
-		public void addDoctor()
-		{
-			Utility u1=new Utility();
-			System.out.println("Enter Your Details ...");
 
-			System.out.println("Enter Name: ");
-			this.DrName=u1.ipstring();
-			System.out.println();
+		public int getPatientCount() {
+			return patientCount;
+		}
 
-			System.out.println("Enter Id: ");
-			this.DrId=u1.ipnumber();
-			System.out.println();
+		public void setPatientCount(int patientCount) {
+			this.patientCount = patientCount;
+		}
 
-			System.out.println("Enter Specialization: ");
-			this.spec=u1.ipstring();
-			System.out.println();
+		public int getDoctorId() {
+			return doctorId;
+		}
 
-			System.out.println("Enter Availability (1:AM   2:PM  3:Both) :");
-			this.avail=u1.ipstring();
-			System.out.println();
+		public void setDoctorId(int doctorId) {
+			this.doctorId = doctorId;
+		}
+
+		public String getDname() {
+			return dname;
+		}
+
+		public void setDname(String dname) {
+			this.dname = dname;
+		}
+
+		public String getSpecialist() {
+			return specialist;
+		}
+
+		public void setSpecialist(String specialist) {
+			this.specialist = specialist;
+		}
+
+		public String getAvailability() {
+			return availability;
+		}
+
+		public void setAvailability(String availability) {
+			this.availability = availability;
 		}
 	}
 

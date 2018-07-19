@@ -208,4 +208,19 @@ public void insert(java.lang.String string) {
 	// TODO Auto-generated method stub
 	
 }
+
+
+	// TODO Auto-generated method stub
+	public static void display1(String card)
+    {
+       
+        for (int i = 0; i < card.length(); i++) {
+            System.out.print(card);
+        }
+        System.out.println();
+    }
+
+
+
+
 }

@@ -1,7 +1,6 @@
 package OOP_AdressBook;
 
-
-	import java.util.ArrayList;
+import java.util.ArrayList;
 
 	public interface AddressBookInterface {
 		public void operation(ArrayList<Person> arrayRead);

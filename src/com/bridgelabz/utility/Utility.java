@@ -48,6 +48,11 @@ public class Utility {
 
 		return scanner.nextInt();
 	}
+	
+	public static long longnumber()
+	{
+		return scanner.nextInt();
+	}
 
 	public int[] ipArray(int n) {
 		int Array[] = new int[n];
@@ -90,6 +95,17 @@ public class Utility {
 		return 0;
 
 	}
+	
+	public static void display1(int array[])
+    {
+       
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]+" ");
+        }
+        System.out.println();
+    }
+
+
 
 	// [1] StringReplace
 	public static void replacestring() {
@@ -400,23 +416,27 @@ public class Utility {
 	{
 		int x, i, f;
 		System.out.println("Prime Number List = ");
-		for (x = 1; x <= 1000; x++) {
+		for (x = 1; x <= 1000; x++) 
+		{
 			f = 0;
 
-			for (i = 2; i < x; i++) {
-				if (x % i == 0) {
+			for (i = 2; i < x; i++) 
+			{
+				if (x % i == 0)
+				{
 
 					f = 1;
 					break;
 				}
 			}
-			if (x == i) {
+			if (x == i) 
+			{
 				System.out.print(x + "\t");
 				int [] newArray = new int[x];
 			}
 			
 		}
-		    return 0;
+		 return 0;   
 	}
 
 	// [3] PRime Anagram and Palindrom
@@ -1701,11 +1721,85 @@ Integer amount = (Integer.parseInt(obj.get("Price").toString()))* (Integer.parse
 	}
 
 	
+
+	
+
+
+	//Deck of card QUEUE[13]
+
+public static void deckOfCardQueue() {
+    String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
+    String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace"};
+    String array [][] = new String[4][9];
+    QueueLinkList q=new QueueLinkList();
+    // initialize deck
+    int n = suits.length * ranks.length;
+    String[] deck = new String[n];
+    for (int i = 0; i < ranks.length; i++)
+    {
+        for (int j = 0; j < suits.length; j++)
+        {
+            deck[suits.length*i + j] = ranks[i] + "->" + suits[j];
+        }
+    }
+
+    // shuffle
+    for (int i = 0; i < n; i++)
+    {
+        int r = i + (int) (Math.random() * (n-i));
+        String temp = deck[r];
+        deck[r] = deck[i];
+        deck[i] = temp;
+    }
+ 
+    // print shuffled deck
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            array[i][j]=deck[i + j * 4];
+            q.insert(array[i][j]+"\t");
+          
+        }
+        q.insert("\n");
+    }
+//    q.display1();
+    SortDeck(array,q);
+}  
+public static void SortDeck(String [][]array,QueueLinkList q) {
+
+	char[] rank = { 'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K' };
+	String[] cards=new String[51];
+	for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            cards[j]=array[i][j];
+           // System.out.print(cards[j]);
+          
+        }
+    }
+	String card;
+		for (int i = 0; i < rank.length; i++) 
+		{
+		for (int j = 0; j < cards.length; j++) 
+		{
+			card = cards[j];
+			//System.out.print(card);
+			char cardRank = card.charAt(card.lastIndexOf(card));
+			if (cardRank == rank[i]){
+				q.insert(card+"\t");
+			}
+		}
+		q.insert("\n");
+	}
+	//	q.display1(card);
 }
-	
+}
 
 
-	
+
 	// OOP_Adress Book [11]
 	
 	/*public void addNewPerson() 

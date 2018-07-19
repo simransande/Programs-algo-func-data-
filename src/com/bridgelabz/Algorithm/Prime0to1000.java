@@ -7,12 +7,12 @@ public class Prime0to1000
 	
 		public static void main(String[ ]  args)
 		{
-			int x,y,z;
+			int x,y;
 			Utility u=new Utility();
 			System.out.println("Prime number list:");
 			
-			int value=Utility.Primenumber();
-			System.out.println(value);
+			Utility.Primenumber();
+			
 			
 			
 		}
