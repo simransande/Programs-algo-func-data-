@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,6 +23,7 @@ import java.util.regex.Pattern;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 
 import DSbanking.Queue;
@@ -1579,6 +1581,7 @@ public class Utility {
 
 	}
 
+		
 	public static void stockReport(FileReader fileRead)
 			throws IOException, ParseException, org.json.simple.parser.ParseException {
 		JSONParser parse = new JSONParser();
@@ -1796,99 +1799,292 @@ public static void SortDeck(String [][]array,QueueLinkList q) {
 	}
 	//	q.display1(card);
 }
+
+
+// comercial data proccessing
+public static void StockAccount() throws IOException, ParseException, org.json.simple.parser.ParseException
+	    {
+	        System.out.println("Enter Your Chocie");
+	        System.out.println("1.Create a new Account");
+	        System.out.println("2.Buy Shares");
+	        System.out.println("3.Sell Shares");
+	        System.out.println("4.Print Report");
+	        System.out.println("5.Exit");
+	        
+	        int choice=Utility.ipnumber();
+	        switch(choice)
+	        {
+	        case 1: System.out.println("Creating Account");
+	                createAcc();
+	                break;
+	        case 2: System.out.println("You are buying Shares");
+	                buyShare();
+	                break;
+	        case 3: System.out.println("You are selling shares");
+	                sellShare();
+	                break;
+	        case 4: System.out.println("Print Report");
+	                 printReport();
+	                 break;
+	        case 5:System.out.println("Exit");
+	        break;
+	        default: break;
+	        }
+	       }
+ 
+public static void createAcc() throws IOException, ParseException, org.json.simple.parser.ParseException
+    {
+        File file = new File("customerShare.json");
+        if(file.exists())
+        {
+           
+            boolean check= true;
+            while (check==true)
+            {   
+                System.out.println("Want to add user: yes or no");
+                String ch = ipstring();
+                if(ch.equals("yes"))
+                {   
+                   
+                    FileReader fr = new FileReader(file);
+                    JSONParser parser = new JSONParser();
+                    JSONArray arr1 = (JSONArray) parser.parse(fr);
+                    JSONObject json = new JSONObject();
+                    System.out.println("Enter name");
+                    String name = ipstring();
+                    System.out.println("Enter balance");
+                    int bal = ipnumber();
+                    json.put("Name",name);
+                    json.put("Balance",bal);
+                    json.put("ShareCount",100);
+               
+                    arr1.add(json);
+                    FileWriter fw = new FileWriter(file);
+                    fw.write(JSONArray.toJSONString(arr1));
+                    fw.flush();
+                    fw.close();
+       
+                }
+                else
+                {
+                    check=false;
+                }
+            }
+           
+        }
+        else
+        {
+            System.out.println("File does not exits");
+        }
+        StockAccount();
+    }
+
+	
+
+	
+	 public static void buyShare() throws IOException, ParseException, org.json.simple.parser.ParseException
+	    {
+	        File file = new File("customerShare.json");
+	        File file1 =new File("companyStock.json");
+	        if(file.exists() && file1.exists())
+	        
+	        {
+	           
+	            // reading stock file
+	            FileReader fr = new FileReader(file);
+	            JSONParser parser = new JSONParser();
+	            JSONArray stock = (JSONArray) parser.parse(fr);
+	            
+	            //reading share file
+	            FileReader sf = new FileReader(file1);
+	            JSONParser parser1 = new JSONParser();
+	            JSONArray share = (JSONArray) parser1.parse(sf);
+	           
+	            System.out.println("Enter the user");
+	            String name = ipstring();
+	            Iterator<?> itr = stock.iterator();
+	            Iterator<?> itr1 = share.iterator();
+	            boolean flag = false;
+	            while (itr.hasNext())
+	            {
+	                JSONObject obj=(JSONObject) itr.next();
+	                if(obj.get("Name").equals(name))
+	                {
+	                    System.out.println("Enter the share sysmbol to buy share:[@,!,#]");
+	                    String sym = ipstring();
+	                    /*obj.put("Share symbol", sym);
+	                    if(obj.get("Share Symbol").equals(sym))
+	                    {*/
+	                        while(itr1.hasNext())
+	                        {
+	                            JSONObject obj1 = (JSONObject) itr1.next();
+	                            if(obj1.get("Symbol").equals(sym))
+	                            {   
+	                                System.out.println("Enter the amount");
+	                                int amt=ipnumber();
+	                                int bal =  Integer.parseInt(obj.get("Balance").toString());
+	                                
+	                                int price = Integer.parseInt(obj1.get("Price").toString());
+	                    
+	                                int noShare =  Integer.parseInt(obj.get("ShareCount").toString());
+	                                
+	                                int stockShare = Integer.parseInt(obj1.get("Count").toString());
+	                                int numofshare = amt/price;
+	                                
+	                                int newbal = bal-amt;
+	                                int sharecountcus = noShare+numofshare;
+	                                int sharecountstock = stockShare-numofshare;
+	                                
+	                                obj.remove("Balance");
+	                                obj.remove("ShareCount");
+	                                obj1.remove("Count");
+	                               
+	                                obj.put("Balance",newbal);
+	                                obj.put("ShareCount",sharecountcus);
+	                                obj1.put("Count", sharecountstock);
+	                                Date d = new Date();
+	                                String date = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a").format(d);
+	                                System.out.println("Date "+date);
+	                                flag= true;
+	                                break;
+	                            }
+	                        }
+	                   }
+	                FileWriter fs = new FileWriter(file);
+	                fs.write(JSONValue.toJSONString(stock));
+	                fs.flush();   
+	                fs.close();
+	            }
+	            if(flag == false)
+	            {
+	                System.out.println("User name not exits");
+	            }
+	            FileWriter fw = new FileWriter(file1);
+	            fw.write(JSONValue.toJSONString(share));
+	            fw.flush();
+	            fw.close();
+	        }
+	        else
+	        {
+	            System.out.println("File does not exits");
+	        }
+	        StockAccount();
+	    }
+
+public static void sellShare() throws IOException, ParseException, org.json.simple.parser.ParseException
+{
+    File file = new File("customerShare.json");
+    File file1 =new File("companyStock.json");
+    if(file.exists() && file1.exists())
+    {
+        //Scanner scan = new Scanner(System.in);
+        // reading stock file
+        FileReader fr = new FileReader(file);
+        JSONParser parser = new JSONParser();
+        JSONArray stock = (JSONArray) parser.parse(fr);
+        //reading share file
+       
+        FileReader sf = new FileReader(file1);
+        JSONParser parser1 = new JSONParser();
+        JSONArray share = (JSONArray) parser1.parse(sf);
+       
+        System.out.println("Enter the user");
+        String name = ipstring();
+        Iterator<?> itr = stock.iterator();
+        Iterator<?> itr1 = share.iterator();
+        boolean flag = false;
+        while (itr.hasNext())
+        {
+            JSONObject obj=(JSONObject) itr.next();
+            if(obj.get("Name").equals(name))
+            {
+                System.out.println("Enter the share sysmbol to sale share:[@,!,#]");
+                String sym = ipstring();
+                System.out.println("Enter the number of share to sale");
+                int count= ipnumber();
+                //obj.put("Share Symbol", sym);
+                while(itr1.hasNext())
+                {
+                    JSONObject obj1 = (JSONObject) itr1.next();
+                    if(obj1.get("Symbol").equals(sym))
+                    {   
+                        int bal =  Integer.parseInt(obj.get("Balance").toString());
+                        int price = Integer.parseInt(obj1.get("Price").toString());
+                        int noShare =  Integer.parseInt(obj.get("ShareCount").toString());
+                        int stockShare = Integer.parseInt(obj1.get("Count").toString());
+                        int saleprize = count*price;
+                        int newbal = bal+saleprize;
+                        int sharecountcus = noShare-count;
+                        
+                        int sharecountstock = stockShare+count;
+                        if(sharecountcus>0 && noShare>0)
+                        {
+                        obj.remove("Balance");
+                        obj.remove("ShareCount");
+                        obj1.remove("Count");
+                        obj.put("Balance",newbal);
+                        obj.put("ShareCount",sharecountcus);
+                        obj1.put("Count", sharecountstock);
+                        }
+                        else
+                        {
+                        	System.out.println("No Shares Available");
+                        }
+                        Date d = new Date();
+                        String date = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a").format(d);
+                        System.out.println("Date "+date);
+                        flag = true;
+                        break;
+                    }
+                   
+                }
+            }
+
+            FileWriter fs = new FileWriter(file);
+            fs.write(JSONValue.toJSONString(stock));
+            fs.flush();
+            fs.close();
+        }
+        if(flag == false)
+        {
+            System.out.println("User name not exits");
+        }
+        FileWriter fw = new FileWriter(file1);
+        fw.write(JSONValue.toJSONString(share));
+        fw.flush();
+        fw.close();
+    }
+    else
+    {
+        System.out.println("File Does not exits");
+    }
+    StockAccount();
 }
 
-
-
-	// OOP_Adress Book [11]
-	
-	/*public void addNewPerson() 
-	{
-		try
+	public static void printReport() throws IOException, ParseException, org.json.simple.parser.ParseException {
+       
+		 File file = new File("customerShare.json");
+		
+		if(!file.exists()||file.length()==2)
 		{
-			File file = new File("/adressBook.json");
-			
-			if(file.exists())
-			{
-				if(file.canRead() && file.canWrite())
-				{
-					FileReader fileReader = new FileReader(file);
-					JSONObject json=new JSONObject();
-					JSONParser parser=new JSONParser();
-					JSONArray array=(JSONArray) parser.parse(fileReader);
-					
-					JSONObject JSON=new JSONObject();
-					System.out.println("Enter the fisrt name:");
-					String name=ipstring();
-					
-					System.out.println("Enter the last name:");
-					String Lname=ipstring();
-					
-					System.out.println("Enter the adress:");
-					String Address=ipstring();
-					
-					System.out.println("Enter the name of city:");
-					String city=ipstring();
-					
-					System.out.println("Enter the name state");
-					String state=ipstring();
-					
-					System.out.println("Enter the ZIP");
-					String ZIP=ipnumber();
-					
-					System.out.println("Enter the mobile number");
-					String MbNo=ipnumber();
-				
-				}
-				
-	*/		
-		
-		// TODO Auto-generated method stub
-		
-		
+			System.out.println("NO customer is there.");
+		}
+		else
+		{
+		FileReader file1=fileRead("customerShare.json");   
+        JSONParser parser=new JSONParser();
+        JSONArray shareArray=(JSONArray)parser.parse(file1);
+        Iterator<?> iterator=shareArray.iterator();
+        while(iterator.hasNext())
+        {
+            JSONObject shareobj=(JSONObject) iterator.next();
+            System.out.println(shareobj);
+        }
+        
+		}  
+	System.out.println();
+        StockAccount();
+}
 
-
-
-//
-
-/*
- * public static void QueuePrimeAnagram() {
- * 
- * int array[][]=PrimeAnagram2D(); QueueLinkList queue=new QueueLinkList();
- * System.out.println("----------------------------------");
- * System.out.println("Prime Anagram using Queue");
- * System.out.println("----------------------------------"); for (int i = 0; i <
- * 10; i++) { for (int j = 0; j < 30; j++) { if(array[i][j]>0 &&
- * array[i][j]<1000) { queue.insert(array[i][j]+"\t");
- * //System.out.print(a[i][j]+"\t"); }
- * 
- * } queue.insert("\n"); } queue.display();
- * 
- * 
- * }
- */
-
-// calender Queue
-
-/*
- * public static void CalendarQueue(int month,int year) { QueueLinkList
- * weekday=new QueueLinkList(); String[] months = {"January", "February",
- * "March","April", "May", "June", "July", "August", "September","October",
- * "November", "December"};
- * 
- * int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; if ((month ==
- * 2) && (isLeapOrNot(year))) { days[month] = 29; } System.out.println("\t\t\t"
- * + months[month-1] + " " + year);
- * System.out.println("\tSun\tMon\tTue\tWed\tThu\tFri\tSat"); int d =
- * dayOfWeek(month, 1, year); for(int i=0;i<d;i++) { weekday.insert("\t"); } for
- * (int i = 1; i <= days[month-1]; i++) { //System.out.printf("%2d ", i);
- * weekday.insert("\t"+i); if (((i + d) % 7 == 0) || (i == days[month-1]))
- * weekday.insert("\n"); } weekday.display(); }
- * 
- * private static boolean isLeapOrNot(int year) { if(year%4==0 || year%400==0 &&
- * year%100!=0) { System.out.println("Is a Leap Year"); return true; } else {
- * System.out.println("Is not a Leap Year"); return false; }
- * 
- * } }
- */
+}
 
