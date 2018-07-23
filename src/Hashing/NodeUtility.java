@@ -18,7 +18,7 @@ public class NodeUtility
 	public Node readFile(Node start) 
 	{
 		try {
-			fis = new FileInputStream("number.txt");
+			fis = new FileInputStream("number1.txt");
 			char ch;
 			String word3 = "";
 
@@ -50,7 +50,7 @@ public class NodeUtility
 	public int[] integerFileReader() {
 		try {
 			String intFile = new String();
-			FileReader fr = new FileReader("number.txt");
+			FileReader fr = new FileReader("number1.txt");
 			br = new BufferedReader(fr);
 			String s;
 

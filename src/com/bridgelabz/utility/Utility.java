@@ -43,7 +43,7 @@ public class Utility {
 	static Scanner scanner = new Scanner(System.in);
 
 	public static String ipstring() {
-		return scanner.next();
+		return scanner.nextLine();
 	}
 
 	public static int ipnumber() {
@@ -107,7 +107,18 @@ public class Utility {
         System.out.println();
     }
 
+	class QNode {
+		public int data;
 
+		public QNode next;
+
+		public QNode(int data) {
+
+			this.data = data;
+			this.next = null;
+		}
+	}
+	
 
 	// [1] StringReplace
 	public static void replacestring() {
@@ -173,8 +184,8 @@ public class Utility {
 		double num = 0.0;
 		for (int i = 1; i <= number; i++) {
 			num = num + (1.0 / i);
-			System.out.println("1/" + i + "=" + num);
 		}
+		System.out.println("harmonic value is:"+num);
 	}
 
 	// [6] PrimeFactor
@@ -244,7 +255,7 @@ public class Utility {
 		int wins = 0;
 		int t;
 		
-		if(cash>=goal)
+		if(stake<goal)
 		{
 		for ( t = 0; t < trails; t++) 
 		{
@@ -267,11 +278,11 @@ public class Utility {
 			{
 				loss++;
 			}
-		
+		}
 			//System.out.println(wins + "wins of" + trails);
-			System.out.println("percent of games won=" + 100.0 * wins / trails);
-			System.out.println("percent of games loss=" + 100.0 * loss / trails);
-			}
+			System.out.println("percent of games won=" + 100 * wins / trails+"%");
+			System.out.println("percent of games loss=" + 100* loss / trails+"%");
+			
 		}
 		else
 		{
@@ -313,13 +324,14 @@ public class Utility {
 		while (f < num)
 		{
 			int value = (int) (Math.random() * num);
-			// System.out.println("value"+value);
+			//System.out.println("value"+value);
 
 			count++;
 			if (!isCollected[value]) 
 			{
 				f++;
 				isCollected[value] = true;
+				System.out.println(value);
 			}
 
 		}
@@ -920,7 +932,7 @@ public class Utility {
 			String str = "";
 			while ((str = br.readLine()) != null) {
 				x[i] = Integer.parseInt(str);
-				System.out.println(x[i]);
+				//System.out.println(x[i]);
 				i++;
 			}
 
@@ -934,8 +946,10 @@ public class Utility {
 			Collections.sort(ob);
 
 			Iterator<Integer> il = ob.iterator();
-
+			
+			System.out.println("after sorting:");
 			while (il.hasNext()) {
+				
 				System.out.println(il.next());
 			}
 
@@ -945,7 +959,7 @@ public class Utility {
 			num = sc.nextInt();
 			int pos = ob.indexOf(num);
 
-			if (pos != -1) {
+			if (pos !=-1) {
 				ob.remove(pos);
 				System.out.println("number found in lis, list after poping = ");
 				il = ob.iterator();
@@ -1065,25 +1079,20 @@ public class Utility {
 					if (withdrawal < balance) 
 					{
 
-						balance = balance - withdrawal;
+						int bal = balance - withdrawal;
+						if(bal<500)
+						{
+							System.out.println("Insufficient balance");
+						}
+						else
+						{
+							balance = balance - withdrawal;
 						System.out.println("Balance is " + balance);
 					}
-					class QNode {
-						public int data;
-
-						public QNode next;
-
-						public QNode(int data) {
-
-							this.data = data;
-							this.next = null;
-						}
+				
 					}
-					if(balance<500)
-					{
-						System.out.println("Insufficient balance");
-					}
-				}// else { System.out.println("Insufficient balance"); }
+				}
+				// else { System.out.println("Insufficient balance"); }
 					  break;
 				
 				case 3:
@@ -2086,5 +2095,6 @@ public static void sellShare() throws IOException, ParseException, org.json.simp
         StockAccount();
 }
 
+	
 }
 

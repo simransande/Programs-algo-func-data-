@@ -1,10 +1,16 @@
 package com.bridgelabz.Algorithm;
+
+import com.bridgelabz.utility.Utility;
+
 class MergeSort
 {
 	// Driver method
     public static void main(String args[])
     {
-        int arr[] = {12, 11, 13, 5, 6, 7};
+    	Utility u=new Utility();
+    	System.out.println("enter size of array");
+    	int x=u.ipnumber();
+        int arr[]=u.ipArray(x);
  
         System.out.println("Given Array");
         printArray(arr);
