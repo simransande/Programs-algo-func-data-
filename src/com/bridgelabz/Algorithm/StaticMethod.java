@@ -46,12 +46,15 @@ package com.bridgelabz.Algorithm;
 			System.out.println("Enter the string you want to search");
 			String str1=u.ipstring();
 			boolean result=u.binarysearchStr(str,str1);
+			System.out.println(result);
 			if(result==true)
 			{
 				System.out.println("The string is found");
 			}else
-				System.out.println("The string is not found");
-			break;
+			{
+				System.out.println("The string is not found...");
+		   }
+		   break;
 		   }
 		   case 3:
 		   {

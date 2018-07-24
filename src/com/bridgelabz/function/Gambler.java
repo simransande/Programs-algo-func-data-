@@ -1,3 +1,14 @@
+/******************************************************************************
+  
+ *  Purpose: Play till the gambler is broke or has won and
+ *  		 Print Number of Wins and Percentage of Win and Loss.
+ *
+ *  @author  Simran Sande
+ *  @version 1.0
+ *  @since   25-06-2018
+ *
+ ******************************************************************************/
+
 package com.bridgelabz.function;
 
 import com.bridgelabz.utility.Utility;

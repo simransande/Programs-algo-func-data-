@@ -1,3 +1,15 @@
+/******************************************************************************
+  
+ *  Purpose: Check if the arrays returned by two string functions are equal.
+ *
+ *  @author  Simran Sande
+ *  @version 1.0
+ *  @since   25-06-2018
+ *
+ ******************************************************************************/
+
+
+
 package com.bridgelabz.function;
 import com.bridgelabz.utility.Utility;
 public class pemutation 

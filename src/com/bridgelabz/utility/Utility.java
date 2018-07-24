@@ -50,9 +50,8 @@ public class Utility {
 
 		return scanner.nextInt();
 	}
-	
-	public static long longnumber()
-	{
+
+	public static long longnumber() {
 		return scanner.nextInt();
 	}
 
@@ -97,15 +96,14 @@ public class Utility {
 		return 0;
 
 	}
-	
-	public static void display1(int array[])
-    {
-       
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i]+" ");
-        }
-        System.out.println();
-    }
+
+	public static void display1(int array[]) {
+
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + " ");
+		}
+		System.out.println();
+	}
 
 	class QNode {
 		public int data;
@@ -118,8 +116,8 @@ public class Utility {
 			this.next = null;
 		}
 	}
+/*---------------------------------------------PROGRAMS METHOD-----------------------------------------------*/
 	
-
 	// [1] StringReplace
 	public static void replacestring() {
 		String username = "<user name>";
@@ -128,7 +126,7 @@ public class Utility {
 		String name = ipstring();
 		username = username.replaceAll(username, name);
 		try {
-			int x = Integer.parseInt(username);
+			int x = Integer.parseInt(username);		//taking string into integer
 			System.out.println("inValid input use only string");
 		} catch (NumberFormatException e) {
 			System.out.println("hello " + username + " , How are you?");
@@ -138,9 +136,9 @@ public class Utility {
 	// [2] flipcoin
 	public static void Flipcoin(int numtime) {
 		int headcount = 0, tailcount = 0;
-		double per1, per2;
+		double per1, per2;						//percentage 
 		for (int i = 0; i < numtime; i++) {
-			double val = getrandomdouble();
+			double val = getrandomdouble();		//get some random value
 			if (val < 0.5) {
 				tailcount++;
 			} else
@@ -173,7 +171,7 @@ public class Utility {
 	{
 		int power = 1;
 		for (int i = 1; i <= number; i++) {
-			power = power * 2;
+			power = power * 2;				
 			System.out.println("2^" + i + "=" + power);
 		}
 
@@ -185,155 +183,87 @@ public class Utility {
 		for (int i = 1; i <= number; i++) {
 			num = num + (1.0 / i);
 		}
-		System.out.println("harmonic value is:"+num);
+		System.out.println("harmonic value is:" + num);
 	}
 
 	// [6] PrimeFactor
-	/*
-	 * public void primefactors(int number) 
-	{
-		System.out.println("Prime factors are");
-		int factor,n,j;
-		for(int i=2;i<=number;i++)
-		{
-			n=i;
-			for(j=2;j<=n;j++)
-			{
-				if(n%j==0)
-				{
-					break;
-				}
-			}
-			
-			if(j==n);
-			{
-				if(number%n==0)
-				{
-					System.out.println(n);
-				}
-			}
-		}
-	}
-	 */
 	
-	public void Primefact(int number) 
-	{
+	public void Primefact(int number) {
 		int fact;
 		int j;
 		int f = 0;
-		for (int i = 2; i < number; i++) 
-		{
+		for (int i = 2; i < number; i++) {
 			int n = i;
-			for (j = 2; j <= n; j++)
-			{
-				if (n % j == 0)
-				{
+			for (j = 2; j <= n; j++) {
+				if (n % j == 0) {
 					break;
 				}
 			}
-			if (j == n) 
-			{
-				if (number % n == 0)
-				{
+			if (j == n) {
+				if (number % n == 0) {
 					System.out.println(n);
 					f++;
 				}
 			}
-	}
-	if (f == 0) 
-		{
+		}
+		if (f == 0) {
 			System.out.println("prime factror is its own number that is :" + number);
 		}
 	}
 
 	// [7] Gambler
-	public void Gambler(int trails, int stake, int goal) 
-	{
-		
+	public void Gambler(int trails, int stake, int goal) {
+
 		int cash = 0;
 		int loss = 0;
 		int wins = 0;
-		int t;
-		
-		if(stake<goal)
-		{
-		for ( t = 0; t < trails; t++) 
-		{
-			cash = stake;
-			while (cash > 0 && cash < goal) 
-			{
-				
-				if (Math.random() < 0.5)
-					cash++;
-				else
-					cash--;
+		int t;					//for loop
+
+		if (stake < goal) {
+			for (t = 0; t < trails; t++) {
+				cash = stake;
+				while (cash > 0 && cash < goal) {
+
+					if (Math.random() < 0.5)
+						cash++;
+					else
+						cash--;
+				}
+				if (cash == goal) {
+					wins++;
+					// System.out.println(wins);
+				} else
+
+				{
+					loss++;
+				}
 			}
-			if (cash == goal) 
-			{
-				wins++;
-				//System.out.println(wins);
-			}
-			else
-				
-			{
-				loss++;
-			}
+			// System.out.println(wins + "wins of" + trails);
+			System.out.println("percent of games won=" + 100 * wins / trails + "%");
+			System.out.println("percent of games loss=" + 100 * loss / trails + "%");
+
+		} else {
+			System.out.println("cash is maximum plz entered valis ammount");
 		}
-			//System.out.println(wins + "wins of" + trails);
-			System.out.println("percent of games won=" + 100 * wins / trails+"%");
-			System.out.println("percent of games loss=" + 100* loss / trails+"%");
-			
-		}
-		else
-		{
-		System.out.println("cash is maximum plz entered valis ammount");
-		}
-		
+
 	}
-		
-
-
 
 	// [8] CouponNumber
-	
-	/*
-	 * public int generatecoupon(int number) 
-	{
-			boolean[] isCollected=new boolean[number];
-			int different=0;
-			int count=0;
-			while(different<number)
-			{
-				int value=(int)(Math.random()*number);
-				count++;
-				if(!isCollected[value])
-				{
-					different++;
-					isCollected[value]=true;
-				}
-			
-			}
-		return count;
 
-	 */
-	public int CouponGenerate(int num)
-	{
+	public int CouponGenerate(int num) {
 		boolean[] isCollected = new boolean[num];
 		int f = 0;
 		int count = 0;
-		while (f < num)
-		{
+		while (f < num) {
 			int value = (int) (Math.random() * num);
-			//System.out.println("value"+value);
+			// System.out.println("value"+value);
 
 			count++;
-			if (!isCollected[value]) 
-			{
+			if (!isCollected[value]) {
 				f++;
 				isCollected[value] = true;
 				System.out.println(value);
 			}
-
 		}
 		return count;
 	}
@@ -342,8 +272,8 @@ public class Utility {
 	public void Array2D(int row, int column) {
 		int x[][] = new int[row][column];
 		System.out.println("enter the value of 2D array");
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < column; j++) {
+		for (int i = 0; i < row; i++) {			//loop for row
+			for (int j = 0; j < column; j++) {	//loop for column
 				x[i][j] = ipnumber();
 			}
 		}
@@ -351,42 +281,64 @@ public class Utility {
 		for (int i = 0; i < column; i++) {
 			for (int j = 0; j < row; j++) {
 				System.out.print(x[i][j] + " ");
-				
+
 			}
-			 System.out.println("");
+			System.out.println("");
 		}
 	}
 
 	// [10] SumAddsToZero
-	public void sumzero(int[] array, int n) 
-	{
+	public void sumzero(int[] array, int n) {
 		int f = 0;
-		for (int i = 0; i < n - 2; i++)
-		{
-			for (int j = i + 1; j < n - 1; j++) 
-			{
-				for (int k = j + 1; k < n; k++) 
-				{
-					if (array[i] + array[j] + array[k] == 0) 
-					{
+		for (int i = 0; i < n - 2; i++) {				//checking till n-2
+			for (int j = i + 1; j < n - 1; j++) {		//till n-1
+				for (int k = j + 1; k < n; k++) {		//till n
+					if (array[i] + array[j] + array[k] == 0) {
 						System.out.println("Triplet is " + array[i] + " " + array[j] + " " + array[k]);
-				f++;
+						f++;
 					}
 				}
 			}
 		}
-		if (f == 0)
-		{
+		if (f == 0) {
 			System.out.println("There are no Triplets in this");
-		}		
+		}
 	}
-	
 
 	// [11] Distance
 	public double distance(int x, int y) {
-		double dis = (double) (Math.pow(x, 2) + Math.pow(y, 2));
+		double dis = (double) (Math.pow(x, 2) + Math.pow(y, 2));	//formula: distance = sqrt(x*x + y*y).
 		double OrignDistance = (double) (Math.sqrt(dis));
 		return OrignDistance;
+	}
+
+	// [12] Permutation of string
+	public void permute1(String str, int l, int r) {
+		if (l == r) {				//left and right of string
+			System.out.println(str);
+
+		} else {
+			for (int i = l; i <= r; i++)
+
+			{
+				str = swap1(str, l, i);
+				permute1(str, l + 1, r);
+				str = swap1(str, l, i);
+			}
+		}
+	}
+	
+
+	public String swap1(String a, int i, int j) {
+		char temp;
+		String str11 = "";
+		char[] charArray = a.toCharArray();
+		temp = charArray[i];
+		charArray[i] = charArray[j];
+		charArray[j] = temp;
+		for (int k = 0; k < charArray.length; k++)
+			str11 = str11 + charArray[k];
+		return str11;
 	}
 
 	// [15] Quadratic
@@ -409,10 +361,10 @@ public class Utility {
 	// [1] Anagram
 	public void Anagram(String array, String array2) {
 		String str1 = array, str2 = array2;
-		int l1 = str1.length();
-		int l2 = str2.length();
+		int l1 = str1.length();		//length of String1
+		int l2 = str2.length();		//length of String2
 
-		char arr1[] = str1.toLowerCase().toCharArray();
+		char arr1[] = str1.toLowerCase().toCharArray();		
 		char arr2[] = str2.toLowerCase().toCharArray();
 
 		Arrays.sort(arr1);
@@ -426,31 +378,26 @@ public class Utility {
 	}
 
 	// [2] Prime numbers
-	public static int Primenumber() 
-	{
+	public static int Primenumber() {
 		int x, i, f;
 		System.out.println("Prime Number List = ");
-		for (x = 1; x <= 1000; x++) 
-		{
+		for (x = 1; x <= 1000; x++) {		//x will rotate for 1000 times
 			f = 0;
 
-			for (i = 2; i < x; i++) 
-			{
-				if (x % i == 0)
-				{
+			for (i = 2; i < x; i++) {		//i will rotate for x times
+				if (x % i == 0) {
 
 					f = 1;
 					break;
 				}
 			}
-			if (x == i) 
-			{
+			if (x == i) {
 				System.out.print(x + "\t");
-				int [] newArray = new int[x];
+				int[] newArray = new int[x];
 			}
-			
+
 		}
-		 return 0;   
+		return 0;
 	}
 
 	// [3] PRime Anagram and Palindrom
@@ -460,24 +407,22 @@ public class Utility {
 		System.out.println("1.Palindrome Prime numbers are:");
 		System.out.println("2.Anagram Prime numbers are:");
 		int x, i, f = 0;
-		int choice=ipnumber();
-		switch(choice)
-		{
+		int choice = ipnumber();
+		switch (choice) {
 		case 1:
-			
-			//System.out.println("Prime Number List = ");
+
+			// System.out.println("Prime Number List = ");
 			for (x = 1; x <= 1000; x++) {
 				f = 0;
 
-				for (i = 2; 	i < x; i++) {
+				for (i = 2; i < x; i++) {
 					if (x % i == 0) {
 
 						f = 1;
 						break;
 					}
 				}
-				if (x == i) 
-					{
+				if (x == i) {
 					{
 						int no = x;
 						int s = 0;
@@ -491,116 +436,106 @@ public class Utility {
 							System.out.print(x + "\t");
 						}
 					}
-					}
+				}
 			}
-			
+
 			break;
-			
-	
-			case 2:
-				
+
+		case 2:
+
 			System.out.println("angrams of prime numbers are:");
 			int[] a = null;
 			int n = 0;
-			//int result=isPrime(a,n);
-				
+			// int result=isPrime(a,n);
+
 			break;
-		
-					}	
+
+		}
 		return f;
 
+	}
 
-}
-	
-	public static boolean isPrime (int number) {
-		  
-	     for(int i=2; i<=number/2; i++){
-	         if(number % i == 0){
-	             return false;
-	         }
-	     }
-	     return true;
-	    }
-	//Method for Prime Numbers
-	    public static int[] primeNumbers(int n)
-	    {
-	            int a[]=new int[n];int k=0;
-	            for(int i=0;i<n;i++)
-	            {
-	                if(isPrime(i))
-	                {
-	                    a[k]=i;
-	                    k++;
-	                }
-	            }
-	            int len=0;
-	            for (int i=0; i<a.length; i++)
-	                {
-	                    if (a[i] != 0)
-	                        len++;
-	                }
-	               
-	                int [] newArray = new int[len];
-	                int j=0;
-	                for (int i=0; i<a.length; i++)
-	                {
-	                    if (a[i] != 0) {
-	                        newArray[j] = a[i];
-	                        j++;
-	                    }
-	                }
-	                System.out.println();
-	              
-	              /*  for (int integer : newArray) {
-	                    System.out.println(integer);
-	                } */
-	            return newArray;
-	           
-	       
-	    }
+	public static boolean isPrime(int number) {
 
-	//Method to display array
-	    public static void display(int array[])
-	    {
-	       
-	        for (int i = 0; i < array.length; i++) {
-	            System.out.print(array[i]+" ");
-	        }
-	        System.out.println();
-	    }
-
-	//Method to find prime anagram
-	    public static boolean FindAnagram(int[] out) {
-	        int len=out.length;
-	       boolean status=false;
-	        for(int i=0;i<len;i++)
-	        {
-	            for(int j=i+1;j<len;j++)
-	            {
-	                //System.out.println(out[i]+" "+out[j]);
-	          //  status=	 AnagramInteger(out[i],out[j]);
-	           
-	            }
-	        }
-	       return status;
-	    }
-	//Method to display anagram
-	    public static void displayangaram(boolean status) {
-			if(status)
-			{
-				System.out.println("Is Anagram");
+		for (int i = 2; i <= number / 2; i++) {
+			if (number % i == 0) {
+				return false;
 			}
-			else
-				System.out.println("Is Not Anagram");
 		}
-	//Method for integer anagram
-	  //  public static boolean AnagramInteger(int n1, int n2) {
-	   
-	    //    String num1=String.valueOf(n1);
-	     //   String num2=String.valueOf(n2);
-	     //  boolean status= Anagram(num1, num2);
-	      // return status;
-	    
+		return true;
+	}
+
+	// Method for Prime Numbers
+	public static int[] primeNumbers(int n) {
+		int a[] = new int[n];
+		int k = 0;
+		for (int i = 0; i < n; i++) {
+			if (isPrime(i)) {
+				a[k] = i;
+				k++;
+			}
+		}
+		int len = 0;
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != 0)
+				len++;
+		}
+
+		int[] newArray = new int[len];
+		int j = 0;
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] != 0) {
+				newArray[j] = a[i];
+				j++;
+			}
+		}
+		System.out.println();
+
+		/*
+		 * for (int integer : newArray) { System.out.println(integer); }
+		 */
+		return newArray;
+
+	}
+
+	// Method to display array
+	public static void display(int array[]) {
+
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + " ");
+		}
+		System.out.println();
+	}
+
+	// Method to find prime anagram
+	public static boolean FindAnagram(int[] out) {
+		int len = out.length;
+		boolean status = false;
+		for (int i = 0; i < len; i++) {
+			for (int j = i + 1; j < len; j++) {
+				// System.out.println(out[i]+" "+out[j]);
+				// status= AnagramInteger(out[i],out[j]);
+
+			}
+		}
+		return status;
+	}
+
+	// Method to display anagram
+	public static void displayangaram(boolean status) {
+		if (status) {
+			System.out.println("Is Anagram");
+		} else
+			System.out.println("Is Not Anagram");
+	}
+	// Method for integer anagram
+	// public static boolean AnagramInteger(int n1, int n2) {
+
+	// String num1=String.valueOf(n1);
+	// String num2=String.valueOf(n2);
+	// boolean status= Anagram(num1, num2);
+	// return status;
+
 	// [5] Magic number
 	public void magicno(int N, int lowerbound, int upperbound, int middle) {
 		System.out.println("Is your number :" + middle);
@@ -787,8 +722,7 @@ public class Utility {
 		int a;
 		int count = 0;
 
-		while (m > 0)
-		{
+		while (m > 0) {
 			a = m % 2;
 			if (a == 1)
 
@@ -799,8 +733,7 @@ public class Utility {
 			x = x + "" + a;
 			m = m / 2;
 		}
-		for (int i = x.length() - 1; i >= 0; i--) 
-		{
+		for (int i = x.length() - 1; i >= 0; i--) {
 			y = y + x.charAt(i);
 		}
 		System.out.println(y);
@@ -932,7 +865,7 @@ public class Utility {
 			String str = "";
 			while ((str = br.readLine()) != null) {
 				x[i] = Integer.parseInt(str);
-				//System.out.println(x[i]);
+				// System.out.println(x[i]);
 				i++;
 			}
 
@@ -946,10 +879,10 @@ public class Utility {
 			Collections.sort(ob);
 
 			Iterator<Integer> il = ob.iterator();
-			
+
 			System.out.println("after sorting:");
 			while (il.hasNext()) {
-				
+
 				System.out.println(il.next());
 			}
 
@@ -959,7 +892,7 @@ public class Utility {
 			num = sc.nextInt();
 			int pos = ob.indexOf(num);
 
-			if (pos !=-1) {
+			if (pos != -1) {
 				ob.remove(pos);
 				System.out.println("number found in lis, list after poping = ");
 				il = ob.iterator();
@@ -996,16 +929,16 @@ public class Utility {
 		 * System.out.println( (char) iterator.next( ) ); }
 		 */
 
-		char front, rear;
+		char front = 0, rear = 0;
 		int f = 0;
 
 		do {
-			front = (char) dequeA.removeFirst();
+			front = (char) dequeA.removeFirst().toLowerCase(front);
 			// System.out.println( front ) ;
 			if (dequeA.isEmpty()) {
 				break;
 			}
-			rear = (char) dequeA.removeLast();
+			rear = (char) dequeA.removeLast().toLowerCase(rear);
 			// System.out.println( rear);
 			if (front != rear) {
 				f = 1;
@@ -1072,29 +1005,24 @@ public class Utility {
 					System.out.println("Balance is " + balance);
 					break;
 
-				case 2:
-				{
+				case 2: {
 					System.out.println("Enter the amt to withdraw");
 					int withdrawal = ipnumber();
-					if (withdrawal < balance) 
-					{
+					if (withdrawal < balance) {
 
 						int bal = balance - withdrawal;
-						if(bal<500)
-						{
+						if (bal < 500) {
 							System.out.println("Insufficient balance");
-						}
-						else
-						{
+						} else {
 							balance = balance - withdrawal;
-						System.out.println("Balance is " + balance);
-					}
-				
+							System.out.println("Balance is " + balance);
+						}
+
 					}
 				}
-				// else { System.out.println("Insufficient balance"); }
-					  break;
-				
+					// else { System.out.println("Insufficient balance"); }
+					break;
+
 				case 3:
 					System.out.println("Current balance is " + balance);
 					break;
@@ -1203,36 +1131,9 @@ public class Utility {
 	 * }
 	 */
 
-	// Permutation of string
-	public void permute1(String str, int l, int r) {
-		if (l == r) {
-			System.out.println(str);
+	
 
-		} else {
-			for (int i = l; i <= r; i++)
-
-			{
-				str = swap1(str, l, i);
-				permute1(str, l + 1, r);
-				str = swap1(str, l, i);
-			}
-		}
-	}
-
-	public String swap1(String a, int i, int j) {
-		char temp;
-		String str11 = "";
-		char[] charArray = a.toCharArray();
-		temp = charArray[i];
-		charArray[i] = charArray[j];
-		charArray[j] = temp;
-		for (int k = 0; k < charArray.length; k++)
-			str11 = str11 + charArray[k];
-		return str11;
-	}
-
-	public String replaceString(userdetails userDetails, String message) 
-	{
+	public String replaceString(userdetails userDetails, String message) {
 		Pattern p = Pattern.compile(NAME);
 		Matcher m = p.matcher(message);
 		message = m.replaceAll(userDetails.getfName());
@@ -1449,17 +1350,17 @@ public class Utility {
 		return false;
 	}
 
-	public boolean binarysearchStr(String[] str, String str1) {
-		int upper = str.length;
+	public boolean binarysearchStr(String[] str, String str1) {	//str1 is the word we have to find or add
+		int upper = str.length; 								//given array
 		int lower = 0;
 		int x = str.length;
 		int middle = (upper + lower) / 2;
 		for (int i = 0; i < str.length; i++) {
-			if (str1.compareTo(str[middle]) > 0) {
+			if ((str1.compareTo(str[middle])) > 0 ){
 				lower = middle;
 			} else if (str1.equals(str[middle])) {
 				return true;
-			} else if (str1.compareTo(str[middle]) < 0) {
+			} else if ((str1.compareTo(str[middle])) < 0) {
 				upper = middle;
 			}
 			while (x > 0) {
@@ -1590,7 +1491,6 @@ public class Utility {
 
 	}
 
-		
 	public static void stockReport(FileReader fileRead)
 			throws IOException, ParseException, org.json.simple.parser.ParseException {
 		JSONParser parse = new JSONParser();
@@ -1630,30 +1530,28 @@ public class Utility {
 	}
 
 	public static void RisePulseWheat(FileReader fileRead1)
-	
-			throws IOException, ParseException, org.json.simple.parser.ParseException 
-	{
+
+			throws IOException, ParseException, org.json.simple.parser.ParseException {
 		JSONParser parse = new JSONParser();
-		
+
 		JSONObject object = (JSONObject) parse.parse(fileRead1);
-		
+
 		// System.out.println(object);
 		int total = 0;
-		
+
 		Iterator<?> iterator = object.keySet().iterator();// Keys of
 															// Object(rice,wheat,pulses)
-		while (iterator.hasNext()) 
-		{
+		while (iterator.hasNext()) {
 			String toppkey = (String) iterator.next();
 			JSONObject obj = (JSONObject) object.get(toppkey);
 			Iterator<?> iterate = obj.keySet().iterator();// keys of each
 															// specific object
-			while (iterate.hasNext()) 
-			{
+			while (iterate.hasNext()) {
 				String key = (String) iterate.next();
 				System.out.println(key + ":" + obj.get(key));
 			}
-Integer amount = (Integer.parseInt(obj.get("Price").toString()))* (Integer.parseInt(obj.get("Weight").toString()));
+			Integer amount = (Integer.parseInt(obj.get("Price").toString()))
+					* (Integer.parseInt(obj.get("Weight").toString()));
 			System.out.println("The total cost of " + obj.get("Name") + " is: " + amount);
 			System.out.println();
 			total = total + amount;
@@ -1702,8 +1600,7 @@ Integer amount = (Integer.parseInt(obj.get("Price").toString()))* (Integer.parse
 		System.out.println("The total Amount of inventory is:" + total);
 	}
 
-	public void stackPrimeAnagram(String string1, String string2) 
-	{
+	public void stackPrimeAnagram(String string1, String string2) {
 		int x, i, f;
 		System.out.println("Prime Number List = ");
 		for (x = 1; x <= 1000; x++) {
@@ -1732,369 +1629,360 @@ Integer amount = (Integer.parseInt(obj.get("Price").toString()))* (Integer.parse
 		}
 	}
 
-	
+	// Deck of card QUEUE[13]
 
-	
-
-
-	//Deck of card QUEUE[13]
-
-public static void deckOfCardQueue() {
-    String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
-    String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace"};
-    String array [][] = new String[4][9];
-    QueueLinkList q=new QueueLinkList();
-    // initialize deck
-    int n = suits.length * ranks.length;
-    String[] deck = new String[n];
-    for (int i = 0; i < ranks.length; i++)
-    {
-        for (int j = 0; j < suits.length; j++)
-        {
-            deck[suits.length*i + j] = ranks[i] + "->" + suits[j];
-        }
-    }
-
-    // shuffle
-    for (int i = 0; i < n; i++)
-    {
-        int r = i + (int) (Math.random() * (n-i));
-        String temp = deck[r];
-        deck[r] = deck[i];
-        deck[i] = temp;
-    }
- 
-    // print shuffled deck
-
-    for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 9; j++)
-        {
-            array[i][j]=deck[i + j * 4];
-            q.insert(array[i][j]+"\t");
-          
-        }
-        q.insert("\n");
-    }
-//    q.display1();
-    SortDeck(array,q);
-}  
-public static void SortDeck(String [][]array,QueueLinkList q) {
-
-	char[] rank = { 'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K' };
-	String[] cards=new String[51];
-	for (int i = 0; i < 4; i++)
-    {
-        for (int j = 0; j < 9; j++)
-        {
-            cards[j]=array[i][j];
-           // System.out.print(cards[j]);
-          
-        }
-    }
-	String card;
-		for (int i = 0; i < rank.length; i++) 
-		{
-		for (int j = 0; j < cards.length; j++) 
-		{
-			card = cards[j];
-			//System.out.print(card);
-			char cardRank = card.charAt(card.lastIndexOf(card));
-			if (cardRank == rank[i]){
-				q.insert(card+"\t");
+	public static void deckOfCardQueue() {
+		String[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
+		String[] ranks = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
+		String array[][] = new String[4][9];
+		QueueLinkList q = new QueueLinkList();
+		// initialize deck
+		int n = suits.length * ranks.length;
+		String[] deck = new String[n];
+		for (int i = 0; i < ranks.length; i++) {
+			for (int j = 0; j < suits.length; j++) {
+				deck[suits.length * i + j] = ranks[i] + "->" + suits[j];
 			}
 		}
-		q.insert("\n");
+
+		// shuffle
+		for (int i = 0; i < n; i++) {
+			int r = i + (int) (Math.random() * (n - i));
+			String temp = deck[r];
+			deck[r] = deck[i];
+			deck[i] = temp;
+		}
+
+		// print shuffled deck
+
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 9; j++) {
+				array[i][j] = deck[i + j * 4];
+				q.insert(array[i][j] + "\t");
+
+			}
+			q.insert("\n");
+		}
+		// q.display1();
+		SortDeck(array, q);
 	}
-	//	q.display1(card);
-}
 
+	public static void SortDeck(String[][] array, QueueLinkList q) {
 
-// comercial data proccessing
-public static void StockAccount() throws IOException, ParseException, org.json.simple.parser.ParseException
-	    {
-	        System.out.println("Enter Your Chocie");
-	        System.out.println("1.Create a new Account");
-	        System.out.println("2.Buy Shares");
-	        System.out.println("3.Sell Shares");
-	        System.out.println("4.Print Report");
-	        System.out.println("5.Exit");
-	        
-	        int choice=Utility.ipnumber();
-	        switch(choice)
-	        {
-	        case 1: System.out.println("Creating Account");
-	                createAcc();
-	                break;
-	        case 2: System.out.println("You are buying Shares");
-	                buyShare();
-	                break;
-	        case 3: System.out.println("You are selling shares");
-	                sellShare();
-	                break;
-	        case 4: System.out.println("Print Report");
-	                 printReport();
-	                 break;
-	        case 5:System.out.println("Exit");
-	        break;
-	        default: break;
-	        }
-	       }
- 
-public static void createAcc() throws IOException, ParseException, org.json.simple.parser.ParseException
-    {
-        File file = new File("customerShare.json");
-        if(file.exists())
-        {
-           
-            boolean check= true;
-            while (check==true)
-            {   
-                System.out.println("Want to add user: yes or no");
-                String ch = ipstring();
-                if(ch.equals("yes"))
-                {   
-                   
-                    FileReader fr = new FileReader(file);
-                    JSONParser parser = new JSONParser();
-                    JSONArray arr1 = (JSONArray) parser.parse(fr);
-                    JSONObject json = new JSONObject();
-                    System.out.println("Enter name");
-                    String name = ipstring();
-                    System.out.println("Enter balance");
-                    int bal = ipnumber();
-                    json.put("Name",name);
-                    json.put("Balance",bal);
-                    json.put("ShareCount",100);
-               
-                    arr1.add(json);
-                    FileWriter fw = new FileWriter(file);
-                    fw.write(JSONArray.toJSONString(arr1));
-                    fw.flush();
-                    fw.close();
-       
-                }
-                else
-                {
-                    check=false;
-                }
-            }
-           
-        }
-        else
-        {
-            System.out.println("File does not exits");
-        }
-        StockAccount();
-    }
+		char[] rank = { 'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K' };
+		String[] cards = new String[51];
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 9; j++) {
+				cards[j] = array[i][j];
+				// System.out.print(cards[j]);
 
-	
+			}
+		}
+		String card;
+		for (int i = 0; i < rank.length; i++) {
+			for (int j = 0; j < cards.length; j++) {
+				card = cards[j];
+				// System.out.print(card);
+				char cardRank = card.charAt(card.lastIndexOf(card));
+				if (cardRank == rank[i]) {
+					q.insert(card + "\t");
+				}
+			}
+			q.insert("\n");
+		}
+		// q.display1(card);
+	}
 
-	
-	 public static void buyShare() throws IOException, ParseException, org.json.simple.parser.ParseException
-	    {
-	        File file = new File("customerShare.json");
-	        File file1 =new File("companyStock.json");
-	        if(file.exists() && file1.exists())
-	        
-	        {
-	           
-	            // reading stock file
-	            FileReader fr = new FileReader(file);
-	            JSONParser parser = new JSONParser();
-	            JSONArray stock = (JSONArray) parser.parse(fr);
-	            
-	            //reading share file
-	            FileReader sf = new FileReader(file1);
-	            JSONParser parser1 = new JSONParser();
-	            JSONArray share = (JSONArray) parser1.parse(sf);
-	           
-	            System.out.println("Enter the user");
-	            String name = ipstring();
-	            Iterator<?> itr = stock.iterator();
-	            Iterator<?> itr1 = share.iterator();
-	            boolean flag = false;
-	            while (itr.hasNext())
-	            {
-	                JSONObject obj=(JSONObject) itr.next();
-	                if(obj.get("Name").equals(name))
-	                {
-	                    System.out.println("Enter the share sysmbol to buy share:[@,!,#]");
-	                    String sym = ipstring();
-	                    /*obj.put("Share symbol", sym);
-	                    if(obj.get("Share Symbol").equals(sym))
-	                    {*/
-	                        while(itr1.hasNext())
-	                        {
-	                            JSONObject obj1 = (JSONObject) itr1.next();
-	                            if(obj1.get("Symbol").equals(sym))
-	                            {   
-	                                System.out.println("Enter the amount");
-	                                int amt=ipnumber();
-	                                int bal =  Integer.parseInt(obj.get("Balance").toString());
-	                                
-	                                int price = Integer.parseInt(obj1.get("Price").toString());
-	                    
-	                                int noShare =  Integer.parseInt(obj.get("ShareCount").toString());
-	                                
-	                                int stockShare = Integer.parseInt(obj1.get("Count").toString());
-	                                int numofshare = amt/price;
-	                                
-	                                int newbal = bal-amt;
-	                                int sharecountcus = noShare+numofshare;
-	                                int sharecountstock = stockShare-numofshare;
-	                                
-	                                obj.remove("Balance");
-	                                obj.remove("ShareCount");
-	                                obj1.remove("Count");
-	                               
-	                                obj.put("Balance",newbal);
-	                                obj.put("ShareCount",sharecountcus);
-	                                obj1.put("Count", sharecountstock);
-	                                Date d = new Date();
-	                                String date = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a").format(d);
-	                                System.out.println("Date "+date);
-	                                flag= true;
-	                                break;
-	                            }
-	                        }
-	                   }
-	                FileWriter fs = new FileWriter(file);
-	                fs.write(JSONValue.toJSONString(stock));
-	                fs.flush();   
-	                fs.close();
-	            }
-	            if(flag == false)
-	            {
-	                System.out.println("User name not exits");
-	            }
-	            FileWriter fw = new FileWriter(file1);
-	            fw.write(JSONValue.toJSONString(share));
-	            fw.flush();
-	            fw.close();
-	        }
-	        else
-	        {
-	            System.out.println("File does not exits");
-	        }
-	        StockAccount();
-	    }
+	// comercial data proccessing
+	public static void StockAccount() throws IOException, ParseException, org.json.simple.parser.ParseException {
+		System.out.println("Enter Your Chocie");
+		System.out.println("1.Create a new Account");
+		System.out.println("2.Buy Shares");
+		System.out.println("3.Sell Shares");
+		System.out.println("4.Print Report");
+		System.out.println("5.Exit");
 
-public static void sellShare() throws IOException, ParseException, org.json.simple.parser.ParseException
-{
-    File file = new File("customerShare.json");
-    File file1 =new File("companyStock.json");
-    if(file.exists() && file1.exists())
-    {
-        //Scanner scan = new Scanner(System.in);
-        // reading stock file
-        FileReader fr = new FileReader(file);
-        JSONParser parser = new JSONParser();
-        JSONArray stock = (JSONArray) parser.parse(fr);
-        //reading share file
-       
-        FileReader sf = new FileReader(file1);
-        JSONParser parser1 = new JSONParser();
-        JSONArray share = (JSONArray) parser1.parse(sf);
-       
-        System.out.println("Enter the user");
-        String name = ipstring();
-        Iterator<?> itr = stock.iterator();
-        Iterator<?> itr1 = share.iterator();
-        boolean flag = false;
-        while (itr.hasNext())
-        {
-            JSONObject obj=(JSONObject) itr.next();
-            if(obj.get("Name").equals(name))
-            {
-                System.out.println("Enter the share sysmbol to sale share:[@,!,#]");
-                String sym = ipstring();
-                System.out.println("Enter the number of share to sale");
-                int count= ipnumber();
-                //obj.put("Share Symbol", sym);
-                while(itr1.hasNext())
-                {
-                    JSONObject obj1 = (JSONObject) itr1.next();
-                    if(obj1.get("Symbol").equals(sym))
-                    {   
-                        int bal =  Integer.parseInt(obj.get("Balance").toString());
-                        int price = Integer.parseInt(obj1.get("Price").toString());
-                        int noShare =  Integer.parseInt(obj.get("ShareCount").toString());
-                        int stockShare = Integer.parseInt(obj1.get("Count").toString());
-                        int saleprize = count*price;
-                        int newbal = bal+saleprize;
-                        int sharecountcus = noShare-count;
-                        
-                        int sharecountstock = stockShare+count;
-                        if(sharecountcus>0 && noShare>0)
-                        {
-                        obj.remove("Balance");
-                        obj.remove("ShareCount");
-                        obj1.remove("Count");
-                        obj.put("Balance",newbal);
-                        obj.put("ShareCount",sharecountcus);
-                        obj1.put("Count", sharecountstock);
-                        }
-                        else
-                        {
-                        	System.out.println("No Shares Available");
-                        }
-                        Date d = new Date();
-                        String date = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a").format(d);
-                        System.out.println("Date "+date);
-                        flag = true;
-                        break;
-                    }
-                   
-                }
-            }
+		int choice = Utility.ipnumber();
+		switch (choice) {
+		case 1:
+			System.out.println("Creating Account");
+			createAcc();
+			break;
+		case 2:
+			System.out.println("You are buying Shares");
+			buyShare();
+			break;
+		case 3:
+			System.out.println("You are selling shares");
+			sellShare();
+			break;
+		case 4:
+			System.out.println("Print Report");
+			printReport();
+			break;
+		case 5:
+			System.out.println("Exit");
+			break;
+		default:
+			break;
+		}
+	}
 
-            FileWriter fs = new FileWriter(file);
-            fs.write(JSONValue.toJSONString(stock));
-            fs.flush();
-            fs.close();
-        }
-        if(flag == false)
-        {
-            System.out.println("User name not exits");
-        }
-        FileWriter fw = new FileWriter(file1);
-        fw.write(JSONValue.toJSONString(share));
-        fw.flush();
-        fw.close();
-    }
-    else
-    {
-        System.out.println("File Does not exits");
-    }
-    StockAccount();
-}
+	public static void createAcc() throws IOException, ParseException, org.json.simple.parser.ParseException {
+		File file = new File("customerShare.json");
+		if (file.exists()) {
+
+			boolean check = true;
+			while (check == true) {
+				System.out.println("Want to add user: yes or no");
+				String ch = ipstring();
+				if (ch.equals("yes")) {
+
+					FileReader fr = new FileReader(file);
+					JSONParser parser = new JSONParser();
+					JSONArray arr1 = (JSONArray) parser.parse(fr);
+					JSONObject json = new JSONObject();
+					System.out.println("Enter name");
+					String name = ipstring();
+					System.out.println("Enter balance");
+					int bal = ipnumber();
+					json.put("Name", name);
+					json.put("Balance", bal);
+					json.put("ShareCount", 100);
+
+					arr1.add(json);
+					FileWriter fw = new FileWriter(file);
+					fw.write(JSONArray.toJSONString(arr1));
+					fw.flush();
+					fw.close();
+
+				} else {
+					check = false;
+				}
+			}
+
+		} else {
+			System.out.println("File does not exits");
+		}
+		StockAccount();
+	}
+
+	public static void buyShare() throws IOException, ParseException, org.json.simple.parser.ParseException {
+		File file = new File("customerShare.json");
+		File file1 = new File("companyStock.json");
+		if (file.exists() && file1.exists())
+
+		{
+
+			// reading stock file
+			FileReader fr = new FileReader(file);
+			JSONParser parser = new JSONParser();
+			JSONArray stock = (JSONArray) parser.parse(fr);
+
+			// reading share file
+			FileReader sf = new FileReader(file1);
+			JSONParser parser1 = new JSONParser();
+			JSONArray share = (JSONArray) parser1.parse(sf);
+
+			System.out.println("Enter the user");
+			String name = ipstring();
+			Iterator<?> itr = stock.iterator();
+			Iterator<?> itr1 = share.iterator();
+			boolean flag = false;
+			while (itr.hasNext()) {
+				JSONObject obj = (JSONObject) itr.next();
+				if (obj.get("Name").equals(name)) {
+					System.out.println("Enter the share sysmbol to buy share:[@,!,#]");
+					String sym = ipstring();
+					/*
+					 * obj.put("Share symbol", sym);
+					 * if(obj.get("Share Symbol").equals(sym)) {
+					 */
+					while (itr1.hasNext()) {
+						JSONObject obj1 = (JSONObject) itr1.next();
+						if (obj1.get("Symbol").equals(sym)) {
+							System.out.println("Enter the amount");
+							int amt = ipnumber();
+							int bal = Integer.parseInt(obj.get("Balance").toString());
+
+							int price = Integer.parseInt(obj1.get("Price").toString());
+
+							int noShare = Integer.parseInt(obj.get("ShareCount").toString());
+
+							int stockShare = Integer.parseInt(obj1.get("Count").toString());
+							int numofshare = amt / price;
+
+							int newbal = bal - amt;
+							int sharecountcus = noShare + numofshare;
+							int sharecountstock = stockShare - numofshare;
+
+							obj.remove("Balance");
+							obj.remove("ShareCount");
+							obj1.remove("Count");
+
+							obj.put("Balance", newbal);
+							obj.put("ShareCount", sharecountcus);
+							obj1.put("Count", sharecountstock);
+							Date d = new Date();
+							String date = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a").format(d);
+							System.out.println("Date " + date);
+							flag = true;
+							break;
+						}
+					}
+				}
+				FileWriter fs = new FileWriter(file);
+				fs.write(JSONValue.toJSONString(stock));
+				fs.flush();
+				fs.close();
+			}
+			if (flag == false) {
+				System.out.println("User name not exits");
+			}
+			FileWriter fw = new FileWriter(file1);
+			fw.write(JSONValue.toJSONString(share));
+			fw.flush();
+			fw.close();
+		} else {
+			System.out.println("File does not exits");
+		}
+		StockAccount();
+	}
+
+	public static void sellShare() throws IOException, ParseException, org.json.simple.parser.ParseException {
+		File file = new File("customerShare.json");
+		File file1 = new File("companyStock.json");
+		if (file.exists() && file1.exists()) {
+			// Scanner scan = new Scanner(System.in);
+			// reading stock file
+			FileReader fr = new FileReader(file);
+			JSONParser parser = new JSONParser();
+			JSONArray stock = (JSONArray) parser.parse(fr);
+			// reading share file
+
+			FileReader sf = new FileReader(file1);
+			JSONParser parser1 = new JSONParser();
+			JSONArray share = (JSONArray) parser1.parse(sf);
+
+			System.out.println("Enter the user");
+			String name = ipstring();
+			Iterator<?> itr = stock.iterator();
+			Iterator<?> itr1 = share.iterator();
+			boolean flag = false;
+			while (itr.hasNext()) {
+				JSONObject obj = (JSONObject) itr.next();
+				if (obj.get("Name").equals(name)) {
+					System.out.println("Enter the share sysmbol to sale share:[@,!,#]");
+					String sym = ipstring();
+					System.out.println("Enter the number of share to sale");
+					int count = ipnumber();
+					// obj.put("Share Symbol", sym);
+					while (itr1.hasNext()) {
+						JSONObject obj1 = (JSONObject) itr1.next();
+						if (obj1.get("Symbol").equals(sym)) {
+							int bal = Integer.parseInt(obj.get("Balance").toString());
+							int price = Integer.parseInt(obj1.get("Price").toString());
+							int noShare = Integer.parseInt(obj.get("ShareCount").toString());
+							int stockShare = Integer.parseInt(obj1.get("Count").toString());
+							int saleprize = count * price;
+							int newbal = bal + saleprize;
+							int sharecountcus = noShare - count;
+
+							int sharecountstock = stockShare + count;
+							if (sharecountcus > 0 && noShare > 0) {
+								obj.remove("Balance");
+								obj.remove("ShareCount");
+								obj1.remove("Count");
+								obj.put("Balance", newbal);
+								obj.put("ShareCount", sharecountcus);
+								obj1.put("Count", sharecountstock);
+							} else {
+								System.out.println("No Shares Available");
+							}
+							Date d = new Date();
+							String date = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a").format(d);
+							System.out.println("Date " + date);
+							flag = true;
+							break;
+						}
+
+					}
+				}
+
+				FileWriter fs = new FileWriter(file);
+				fs.write(JSONValue.toJSONString(stock));
+				fs.flush();
+				fs.close();
+			}
+			if (flag == false) {
+				System.out.println("User name not exits");
+			}
+			FileWriter fw = new FileWriter(file1);
+			fw.write(JSONValue.toJSONString(share));
+			fw.flush();
+			fw.close();
+		} else {
+			System.out.println("File Does not exits");
+		}
+		StockAccount();
+	}
 
 	public static void printReport() throws IOException, ParseException, org.json.simple.parser.ParseException {
-       
-		 File file = new File("customerShare.json");
-		
-		if(!file.exists()||file.length()==2)
-		{
+
+		File file = new File("customerShare.json");
+
+		if (!file.exists() || file.length() == 2) {
 			System.out.println("NO customer is there.");
+		} else {
+			FileReader file1 = fileRead("customerShare.json");
+			JSONParser parser = new JSONParser();
+			JSONArray shareArray = (JSONArray) parser.parse(file1);
+			Iterator<?> iterator = shareArray.iterator();
+			while (iterator.hasNext()) {
+				JSONObject shareobj = (JSONObject) iterator.next();
+				System.out.println(shareobj);
+			}
+
 		}
-		else
-		{
-		FileReader file1=fileRead("customerShare.json");   
-        JSONParser parser=new JSONParser();
-        JSONArray shareArray=(JSONArray)parser.parse(file1);
-        Iterator<?> iterator=shareArray.iterator();
-        while(iterator.hasNext())
-        {
-            JSONObject shareobj=(JSONObject) iterator.next();
-            System.out.println(shareobj);
-        }
-        
-		}  
-	System.out.println();
-        StockAccount();
-}
+		System.out.println();
+		StockAccount();
+	}
 
-	
-}
+	// Anagram 2D
 
+	/*
+	 * public static boolean AnagramInteger(int n1, int n2) {
+	 * 
+	 * String num1=String.valueOf(n1); String num2=String.valueOf(n2); boolean
+	 * status= Anagram(num1, num2); return status; }
+	 * 
+	 * public static int[] Prime2D() { int[][] a=new int[10][30]; int b[]=new
+	 * int[250]; int k=0; int c=0;
+	 * 
+	 * while(c<250) { if(isPrime(k)) { b[c]=k; c++; } k++; } int v=0; for(int
+	 * i=0;i<10;i++) { int max=100; for(int j=0;j<30;j++) { if(b[v]<(i+1)*max) {
+	 * a[i][j]=b[v]; v++; } } }int start=0,end=1; for(int i=0;i<10;i++) {
+	 * end=(i+1)*100; System.out.print("["+start+"-"+end+"]"); start=1+end;
+	 * for(int j=0;j<30;j++) { if(a[i][j]>0) {
+	 * 
+	 * System.out.print(a[i][j]+"\t"); } } System.out.println(); } return b; }
+	 * 
+	 * public static int[][] PrimeAnagram2D() { int array[]=Prime2D(); int n1=0;
+	 * int n2=0; int k=0; boolean status=false; int newarray[] = new int[300];
+	 * for(int i=0;i<array.length-1;i++) { for (int j = i+1; j < array.length;
+	 * j++) { n1=array[i]; n2=array[j]; status=AnagramInteger(n1, n2);
+	 * if(status==true) { newarray[k++]=n1; newarray[k++]=n2;
+	 * 
+	 * } } } int v=0; int a[][]=new int[10][30]; for(int i=0;i<10;i++) { int
+	 * max=100; for(int j=0;j<30;j++) { if(array[v]<(i+1)*max) {
+	 * a[i][j]=newarray[v]; v++; } } }
+	 * System.out.println("-------------------------------");
+	 * System.out.println("Prime Numbers that are Anagram");
+	 * System.out.println("-------------------------------"); for(int
+	 * i=0;i<10;i++) { for(int j=0;j<30;j++) { if(a[i][j]>0 && a[i][j]<1000) {
+	 * 
+	 * System.out.print(a[i][j]+"\t"); } } System.out.println(); } return a; }
+	 * 
+	 * 
+	 */
+}

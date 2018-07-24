@@ -1,4 +1,4 @@
-package CompanyShare;
+/*package CompanyShare;
 
 import java.io.File;
 	import java.io.FileReader;
@@ -109,4 +109,4 @@ import java.io.File;
 			}
 			
 		}
-	}
+	}*/
